@@ -1,0 +1,14 @@
+{
+  "name": "project1flash",
+  "version": "1.0.0",
+  "description": "Our first testing project",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.62.1",
+    "@types/node": "^26.2.0"
+  }
+}

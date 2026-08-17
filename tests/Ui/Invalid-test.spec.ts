@@ -10,5 +10,5 @@ test('test', async ({ page }) => {
   await page.getByRole('textbox', { name: 'Password' }).fill('Password');  
 
   await page.getByRole('button', { name: 'Sign In' }).click();
-  await expect(page.getByRole('heading', { name: 'Portfolio Overview' })).toBeVisible();
+  await expect(page.getByRole('main').getByText('Invalid credentials',)).toBeVisible();
 });

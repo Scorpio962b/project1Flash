@@ -35,4 +35,5 @@ test("test", async ({ page }) => {
     .check();
 
   await page.getByRole("button", { name: "Create account" }).click();
+  
 });

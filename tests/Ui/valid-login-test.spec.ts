@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 test('test', async ({ page }) => {
   await page.goto('http://localhost:4173/');
   await page.getByRole('link', { name: 'FlashGateway' }).click();
-  await page.getByRole('link', { name: 'Sign In' }).nth(1).click();
+  await page.getByRole('link', { name: 'Sign In' }).click();
 
 // valid credentials
   await page.getByRole('textbox', { name: 'Email address' }).fill('merchant@flashgateway.local');
@@ -11,4 +11,5 @@ test('test', async ({ page }) => {
 
   await page.getByRole('button', { name: 'Sign In' }).click();
   await expect(page.getByRole('heading', { name: 'Portfolio Overview' })).toBeVisible();
+  
 });

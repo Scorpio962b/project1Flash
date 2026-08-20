@@ -35,5 +35,5 @@ test("test", async ({ page }) => {
     .check();
 
   await page.getByRole("button", { name: "Create account" }).click();
-  
+  await expect (page.getByRole('status').getByText('Email, full name and password')).toBeVisible();
 });

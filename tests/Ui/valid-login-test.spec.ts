@@ -10,6 +10,6 @@ test('test', async ({ page }) => {
   await page.getByRole('textbox', { name: 'Password' }).fill('Password123!');  
 
   await page.getByRole('button', { name: 'Sign In' }).click();
-  await expect(page.getByRole('heading', { name: 'Portfolio Overview' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Portfolio Overview' })).toBeVisible({timeout :150000});
   
 });

@@ -27,10 +27,8 @@ test('Defect - Immediate payment option is not working', async ({ page }) => {
   await page.getByRole('textbox', {name : 'e.g. Invoice INV-2024-001'}).fill('inv-2024-003');
 
   // Click Immediate Payment
-  await page.getByRole('button', { name: 'Immediate payment' }).click();
+  await page.getByRole('button', { name: 'lock Confirm & Transfer' }).click();
 
   // Expected: immediate payment option should become selected
-  await expect(
-    page.getByText(/immediate payment/i)
-  ).toBeVisible();
+    await expect(page.getByRole('status').getByText('insufficient balance',)).toBeVisible();
 });

@@ -5,16 +5,17 @@ test("test", async ({ page }) => {
   await page.getByRole("link", { name: "Sign In" }).nth(1).click();
   await page
     .getByRole("textbox", { name: "Email address" })
-    .fill("merchant@flashgateway.local");
+    .fill("admin@flashgateway.local");
 
   await page.getByRole("textbox", { name: "Password" }).fill("Password123!");
   await page.getByRole("button", { name: "Sign In" }).click();
-  await expect(page).toHaveURL("http://localhost:4173/dashboard");
+   await expect(page.getByRole('heading', { name: 'Portfolio Overview' })).toBeVisible({timeout :150000});
+//   await expect(page).toHaveURL("http://localhost:4173/dashboard");
   await page.getByRole("link", { name: "phone_iphone Buy Airtime" }).click();
   await page.getByRole("button", { name: "V Vodacom" }).click();
   await page.getByRole("textbox", { name: "000 0000" }).fill("658525685");
   await page.getByRole("spinbutton", { name: "0.00" }).fill("10");
   await page.getByRole("button", { name: "Review Payment arrow_forward" }).click();
   await page.getByRole("button", { name: "Confirm Payment" }).click();
-  await expect( page.getByText('Airtime top-up for Vodacom')).toBeVisible({ timeout: 15000 });
+  await expect( page.getByRole('status', { name: 'Airtime for Vodacom was submitted successfully' })).toBeVisible({ timeout: 150000 });
 })

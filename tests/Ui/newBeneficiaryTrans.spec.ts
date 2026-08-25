@@ -10,7 +10,7 @@ test('test', async ({ page }) => {
   await expect(page).toHaveURL(/dashboard/);
 
 
-  await page.getByRole('link', { name: 'send_money Send Money Local' }).click();
+  await page.getByRole('link', { name: 'payments Transfer Funds' }).click();
   await page.getByRole('button', { name: 'One-off beneficiary Enter one' }).click();
  
   await page.getByRole('textbox', { name: 'Beneficiary Name' }).fill('Mother');
@@ -23,5 +23,7 @@ test('test', async ({ page }) => {
 
   await page.getByRole('textbox', { name: 'e.g. Invoice INV-2024-' }).fill('Groceries');
   await page.getByRole('button', { name: 'lock Confirm & Transfer' }).click();
+
+  await expect(page.getByText('Successful')).toBeVisible({timeout: 100000});
   
 });

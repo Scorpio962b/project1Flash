@@ -6,10 +6,9 @@ test('test', async ({ page }) => {
   await page.getByRole('link', { name: 'Sign In' }).nth(2).click();
 
 // valid credentials
-  await page.getByRole('textbox', { name: 'Email address' }).fill('merchant@flashgateway.local');
+  await page.getByRole('textbox', { name: 'Email address' }).fill('admoods@flashgateway.local');
   await page.getByRole('textbox', { name: 'Password' }).fill('Password123!');  
 
   await page.getByRole('button', { name: 'Sign In' }).click();
-  await expect(page.getByRole('heading', { name: 'Portfolio Overview' })).toBeVisible({timeout :100000});
-  
+  await expect(page.getByRole('main').getByText('Invalid credentials',)).toBeVisible();
 });

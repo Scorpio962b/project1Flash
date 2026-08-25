@@ -1,3 +1,4 @@
+
 import { test, expect } from '@playwright/test';
 
 test('Main balance decreases after successful transfer', async ({ page }) => {

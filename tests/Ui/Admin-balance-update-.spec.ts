@@ -1,4 +1,3 @@
-
 import { test, expect } from '@playwright/test';
 
 test('Main balance decreases after successful transfer', async ({ page }) => {
@@ -7,7 +6,7 @@ test('Main balance decreases after successful transfer', async ({ page }) => {
   await page.goto('http://localhost:4173/');
 
   // Login
-  await page.getByLabel('Email').fill('merchant@flashgateway.local');
+  await page.getByLabel('Email').fill('admin@flashgateway.local');
   await page.getByLabel('Password').fill('Password123!');
   await page.getByRole('button', { name: 'Log in' }).click();
 

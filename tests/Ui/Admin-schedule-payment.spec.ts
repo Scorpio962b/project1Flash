@@ -6,7 +6,7 @@ test("Defect  Schedule payment option is not working", async ({ page }) => {
   await page.getByRole("link", { name: "Sign In" }).nth(1).click();
 
   // Login
-  await page.getByLabel("Email").fill("merchant@flashgateway.local");
+  await page.getByLabel("Email").fill("admin@flashgateway.local");
   await page.getByRole("textbox", { name: "Password" }).fill("Password123!");
   await page.getByRole("button", { name: "Sign In" }).click();
 

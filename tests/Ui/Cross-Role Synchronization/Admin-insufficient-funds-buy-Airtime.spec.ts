@@ -9,7 +9,7 @@ test('test', async ({ page }) => {
   await page.getByRole('textbox', { name: 'Password' })
     .fill('Password123!');
   await page.getByRole('button', { name: 'Sign In' }).click();
-  await page.goto('http://localhost:4173/dashboard');
+  // await page.goto('http://localhost:4173/dashboard');
   await page.getByRole('link', { name: 'phone_iphone Buy Airtime' }).click();
   await page.getByRole('button', { name: 'T Telkom' }).click();
   await page.getByRole('textbox', { name: '000 0000' }).click();

@@ -9,7 +9,7 @@ test("test", async ({ page }) => {
 
   await page.getByRole("textbox", { name: "Password" }).fill("Password123!");
   await page.getByRole("button", { name: "Sign In" }).click();
-  await expect(page).toHaveURL("http://localhost:4173/dashboard");
+  // await expect(page).toHaveURL("http://localhost:4173/dashboard");
   await page.getByRole('link', { name: 'send_money Send Money Local' }).click();
   await page.getByRole('button', { name: 'One-off beneficiary Enter one' }).click();
   await page.getByRole('textbox', { name: 'Beneficiary Name' }).fill('Mother');

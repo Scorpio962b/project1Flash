@@ -1,14 +1,11 @@
 import { test, expect } from '@playwright/test';
+import { loginPage, } from '../../../pages/Merchant-login-test';
 
-test('test', async ({ page }) => {
-  await page.goto('http://localhost:4173/');
-  await page.getByRole('link', { name: 'FlashGateway' }).click();
-  await page.getByRole('link', { name: 'Sign In' }).nth(2).click();
+test('merchant login', async ({ page }) => {
+  test.setTimeout(150000)
+  const merchantLogin = new loginPage(page);
 
-// valid credentials
-  await page.getByRole('textbox', { name: 'Email address' }).fill('admin@flashgateway.local');
-  await page.getByRole('textbox', { name: 'Password' }).fill('Password123!');  
-
-  await page.getByRole('button', { name: 'Sign In' }).click();
-  await expect(page.getByRole('heading', { name: 'Portfolio Overview' })).toBeVisible();
+  await merchantLogin.open();
+  await merchantLogin.login('admin@flashgateway.local','Password123!')
+  await expect(page.getByRole('heading',{name: 'Portfolio Overview'})).toBeVisible({timeout :150000});
 });

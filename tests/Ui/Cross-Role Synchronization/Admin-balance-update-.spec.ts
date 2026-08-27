@@ -4,11 +4,11 @@ test('Main balance decreases after successful transfer', async ({ page }) => {
 
   // Open the application
   await page.goto('http://localhost:4173/');
-
+  await page.getByRole("link", { name: "Sign In" }).nth(1).click();
   // Login
   await page.getByLabel('Email').fill('admin@flashgateway.local');
   await page.getByLabel('Password').fill('Password123!');
-  await page.getByRole('button', { name: 'Log in' }).click();
+  await page.getByRole('button', { name: 'Sign In' }).click();
 
   // Check the main account balance before making the transfer
   const mainBalance = page.getByTestId('main-balance');

@@ -1,0 +1,12 @@
+[
+    
+    {
+        "type": "request", 
+        "message": "Get metrics list with non-admin role."
+    },
+    {
+        "type": "response",
+        "status code": 403,
+        "message": "Insufficient permissions"
+    }
+]

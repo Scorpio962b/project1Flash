@@ -1,0 +1,28 @@
+[
+    {
+        "id": 3,
+        "merchantId": 1,
+        "amount": 10,
+        "transactionType": "purchase",
+        "productId": 1,
+        "status": "completed",
+        "createdAt": "2026-08-17T13:09:18.219Z",
+        "created_at": "2026-08-17T13:09:18.219Z"
+    },
+    {
+        "id": 1,
+        "merchantId": 1,
+        "amount": 5000,
+        "transactionType": "credit",
+        "service_type": null,
+        "status": "completed",
+        "createdAt": "2026-07-17T00:00:00Z",
+        "created_at": "2026-07-17T00:00:00Z"
+    },
+
+    {
+    "response": "success",
+    "status": 200
+    }
+    
+]

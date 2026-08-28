@@ -1,0 +1,31 @@
+[{
+        "type": "request", 
+        "message": "update a payment method."
+},
+{
+    "type": "Account to update",
+    
+    "id": 3,
+    "merchantId": 1,
+    "nickname": "Secondary Visa",
+    "cardNumber": "**** 7890",
+    "expiryDate": "01/27",
+    "status": "Active" 
+},
+{
+  "message": "update to...",
+
+  "nickname": "Primary passport",
+  "expiryDate": "02/27"
+},
+{
+    "type": "response",
+    "id": 3,
+    "merchantId": 1,
+    "nickname": "Primary passport",
+    "cardNumber": "**** 7890",
+    "expiryDate": "02/27",
+    "status": "Active"
+}
+
+]

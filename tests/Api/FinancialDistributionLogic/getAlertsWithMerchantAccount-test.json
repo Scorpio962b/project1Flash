@@ -1,0 +1,20 @@
+[
+    {
+        "type": "response",
+        "message": "Available alerts",
+        "status code": 200
+    },
+
+    {
+        "id": 1,
+        "title": "High-value withdrawal approved",
+        "type": "info",
+        "accountId": 1
+    },
+    {
+        "id": 2,
+        "title": "Airtime purchase completed",
+        "type": "success",
+        "accountId": 1
+    }
+]

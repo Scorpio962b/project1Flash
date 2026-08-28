@@ -1,0 +1,15 @@
+{
+    "items": [
+        {
+            "id": 1,
+            "merchantId": 1,
+            "amount": 450,
+            "description": "Settlement for voucher issue",
+            "createdAt": "2026-07-17T00:00:00Z"
+        }
+    ],
+    "response": {
+        "status": 200,
+        "message": "Settlements retrieved successfully"
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "request": [
+{
+  "amount": 30,
+  "product": "Airtime",
+  "productId": 1
+}],
+
+    "response": 
+{
+    "status": 404,
+    "message": "Admins are failing to make purchases on behalf of merchants."
+
+}
+} 

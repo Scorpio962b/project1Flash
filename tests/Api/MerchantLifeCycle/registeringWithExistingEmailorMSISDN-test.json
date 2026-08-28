@@ -1,0 +1,16 @@
+[
+{
+  "type": "request",
+  
+  "email": "merchant@flashgateway.local",
+  "fullName": "MJ",
+  "msisdn": "+27821834567",
+  "password": "P@ssword123!"
+},
+{
+  "type": "response",
+  "status code": 409,
+
+  "message": "Email or MSISDN already exists"
+}
+]

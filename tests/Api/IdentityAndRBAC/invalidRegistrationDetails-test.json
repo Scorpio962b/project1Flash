@@ -1,0 +1,16 @@
+[
+{
+  "type": "request",
+
+  "email": "newmerchant",
+  "fullName": "New Merchant",
+  "msisdn": "+27821234567",
+  "password": "Pass"
+},
+{
+    "type": "response",
+    "status code": 400,
+
+    "message": "Password must be at least 8 characters and include at least one uppercase letter, one lowercase letter, one number, and one special character."
+}
+]

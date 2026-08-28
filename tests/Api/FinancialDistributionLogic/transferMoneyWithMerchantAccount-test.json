@@ -1,0 +1,29 @@
+{
+    "request": [
+{
+  "senderAccountId": 1,
+  "recipientAccountId": 2,
+  "amount": 50,
+  "reference": "Building material settlement"
+}
+],
+
+
+    "response": {
+    "success": true,
+    "status code": 200,
+
+    "transfer": {
+    "id": 3,
+    "merchantId": 1,
+    "amount": 50,
+    "transactionType": "transfer",
+    "status": "completed",
+    "reference": "Building material settlement",
+    "recipientName": "Northstar Pay",
+    "recipientAccountNumber": "ACC-2",
+    "recipientBank": null,
+    "createdAt": "2026-08-24T11:52:28.333Z"
+    }
+    }
+}

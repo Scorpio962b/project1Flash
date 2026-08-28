@@ -1,0 +1,17 @@
+ [{
+        "type": "response", 
+        "message": "Request successful.",
+        "status code": 200
+}, 
+{
+        "type": "request", 
+        "message": "Add a new payment method."
+}, 
+{
+    "id": 3,
+    "merchantId": 1,
+    "nickname": "Secondary Visa",
+    "cardNumber": "**** 7890",
+    "expiryDate": "01/27",
+    "status": "Active"
+}]

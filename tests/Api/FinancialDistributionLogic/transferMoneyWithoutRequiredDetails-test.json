@@ -1,0 +1,15 @@
+{
+    "request": [
+{
+  "senderAccountId": 1,
+  "recipientAccountId": 2,
+  "amount": 0,
+  "reference": ""
+}
+],
+
+    "response": {
+    "status code": 400,
+    "message": "Invalid transfer amount"
+    }
+}

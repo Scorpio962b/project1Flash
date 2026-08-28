@@ -1,0 +1,22 @@
+[
+{
+  "type": "request",
+  
+  "beneficiaryName": "Tumelo Supplies",
+  "bank": "Tyme Bank",
+  "accountNumber": "2468504737",
+  "reference": "Software expenses"
+},
+{
+  "type": "response",
+  "status code": 200,
+
+
+    "id": 4,
+    "beneficiary_name": "Tumelo Supplies",
+    "bank": "Tyme Bank",
+    "account_number": "2468504737",
+    "reference": "Software expenses",
+    "created_at": "2026-08-24T10:11:42.114Z"
+}
+]

@@ -1,0 +1,21 @@
+[{
+
+    
+  "type": "request",
+  "beneficiaryName": "Amukelani Dlamini",
+  "bank": "Tyme Bank",
+  "accountNumber": "2464567890",
+  "reference": "Transportation expenses"
+},
+{
+    "type": "response",
+    "message": "Available accounts",
+    "status code": 201,
+
+    "id": 3,
+    "beneficiary_name": "Amukelani Dlamini",
+    "bank": "Tyme Bank",
+    "account_number": "2464567890",
+    "reference": "Transportation expenses",
+    "created_at": "2026-08-19T09:02:19.854Z"
+}]

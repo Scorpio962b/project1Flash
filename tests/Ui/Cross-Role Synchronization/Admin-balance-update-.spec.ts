@@ -1,14 +1,12 @@
 import { test, expect } from '@playwright/test';
-
+import { loginPage, } from '../../../pages/Admin-login-test';
 test('Main balance decreases after successful transfer', async ({ page }) => {
 
   // Open the application
-  await page.goto('http://localhost:4173/');
-  await page.getByRole("link", { name: "Sign In" }).nth(1).click();
-  // Login
-  await page.getByLabel('Email').fill('admin@flashgateway.local');
-  await page.getByLabel('Password').fill('Password123!');
-  await page.getByRole('button', { name: 'Sign In' }).click();
+ const adminLogin = new loginPage(page);
+  
+    await adminLogin.open();
+    await adminLogin.login('admin@flashgateway.local','Password123!' ) 
 
   // Check the main account balance before making the transfer
   const mainBalance = page.getByTestId('main-balance');

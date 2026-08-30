@@ -1,15 +1,11 @@
 import { test, expect } from '@playwright/test';
-
+import { loginPage, } from '../../../pages/Merchant-login-test';
 test('test', async ({ page }) => {
-  await page.goto('http://localhost:4173/');
-  await page.getByRole('link', { name: 'Sign In' }).nth(1).click();
-    await page.getByRole('textbox', { name: 'Email address' })
-    .fill('merchant@flashgateway.local');
+  const merchantLogin = new loginPage(page);
 
-  await page.getByRole('textbox', { name: 'Password' })
-    .fill('Password123!');
-  await page.getByRole('button', { name: 'Sign In' }).click();
-  await page.goto('http://localhost:4173/dashboard');
+  await merchantLogin.open();
+  await merchantLogin.login('merchant@flashgateway.local','Password123!' )
+
   await page.getByRole('link', { name: 'phone_iphone Buy Airtime' }).click();
   await page.getByRole('button', { name: 'T Telkom' }).click();
   await page.getByRole('textbox', { name: '000 0000' }).click();

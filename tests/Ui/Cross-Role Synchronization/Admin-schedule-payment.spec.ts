@@ -1,14 +1,11 @@
 import { test, expect } from "@playwright/test";
-
+import { loginPage, } from '../../../pages/Admin-login-test';
 test("Defect  Schedule payment option is not working", async ({ page }) => {
   // Open the application
-  await page.goto("http://localhost:4173/");
-  await page.getByRole("link", { name: "Sign In" }).nth(1).click();
-
-  // Login
-  await page.getByLabel("Email").fill("admin@flashgateway.local");
-  await page.getByRole("textbox", { name: "Password" }).fill("Password123!");
-  await page.getByRole("button", { name: "Sign In" }).click();
+ const adminLogin = new loginPage(page);
+  
+    await adminLogin.open();
+    await adminLogin.login('admin@flashgateway.local','Password123!' ) 
 
   // Go to Transfers
   await page.getByRole("link", { name: "Transfer funds" }).click();

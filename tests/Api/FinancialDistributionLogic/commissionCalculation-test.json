@@ -1,0 +1,76 @@
+[
+{
+    "type": "merchant account before airtime purchase commissions",
+
+    "id": 1,
+    "merchantName": "Ava Finance",
+    "email": "merchant@flashgateway.local",
+    "role": "merchant",
+    "walletBalance": 5000,
+    "status": "active"
+},
+{
+  "type": "request",
+
+  "amount": 10,
+  "product": "Airtime",
+  "productId": 1
+},
+{
+    "type": "response",
+
+    "status code": 200,
+    "success": true,
+    "commission": "1.00",
+    "settlementAmount": "9.00"
+},
+{
+    "type": "merchant account after airtime purchase commissions",
+    
+    "id": 1,
+    "merchantName": "Ava Finance",
+    "email": "merchant@flashgateway.local",
+    "role": "merchant",
+    "walletBalance": 4990,
+    "status": "active"
+},
+
+
+
+
+{
+    "type": "merchant account before sms purchase commissions",
+
+    "id": 1,
+    "merchantName": "Ava Finance",
+    "email": "merchant@flashgateway.local",
+    "role": "merchant",
+    "walletBalance": 4990,
+    "status": "active"
+},
+{
+  "type": "request",
+
+  "amount": 10,
+  "product": "SMS",
+  "productId": 1
+},
+{
+    "type": "response",
+
+    "status code": 200,
+    "success": true,
+    "commission": "1.00",
+    "settlementAmount": "9.00"
+},
+{
+    "type": "merchant account after sms purchase commissions",
+    
+    "id": 1,
+    "merchantName": "Ava Finance",
+    "email": "merchant@flashgateway.local",
+    "role": "merchant",
+    "walletBalance": 4980,
+    "status": "active"
+}
+]

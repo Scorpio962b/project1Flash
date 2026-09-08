@@ -1,0 +1,18 @@
+[
+     {
+        "type": "response",
+        "message": "Available payment methods",
+        "status code": 200
+    },
+    {
+        "id": 3,
+        "merchantId": 2,
+        "nickname": "Visa",
+        "cardNumber": "**** 3647",
+        "expiryDate": "12/27",
+        "status": "Active"
+    },
+    {
+        "fault": "The API only shows payment methods added by the admin, and not for those added by merchants. It should show all payment methods for the merchant, regardless of who added them."
+    }
+]

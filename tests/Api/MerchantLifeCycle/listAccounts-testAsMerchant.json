@@ -1,0 +1,14 @@
+[
+    
+    {
+        "type": "response",
+        "message": "Available accounts",
+        "status code": 200,
+
+        "id": 1,
+        "full_name": "Ava Finance",
+        "email": "merchant@flashgateway.local",
+        "balance": 4990,
+        "status": "active"
+    }
+]

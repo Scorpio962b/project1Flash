@@ -1,0 +1,17 @@
+[
+{
+  "type": "request",
+  
+  "email": "",
+  "fullName": "",
+  "msisdn": "+277358945670",
+  "password": ""
+},
+{
+  "type": "response",
+  "status code": 400,
+
+    "message": "Email, full name and password are required"
+
+}
+]

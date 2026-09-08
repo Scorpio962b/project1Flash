@@ -1,0 +1,46 @@
+[
+{
+  "type": "merchant request to purchase airtime",
+
+  "amount": 10,
+  "product": "Airtime",
+  "productId": 1
+},
+{
+    "type": "merchant response to purchase airtime",
+    "status code": 200,
+
+    "success": true,
+    "commission": "1.00",
+    "settlementAmount": "9.00",
+
+    "Observation": "The commission is calculated as 10% of the purchase amount, which is 1.00. The settlement amount is the purchase amount minus the commission, which is 9.00.",
+    "commission deducted for airtime purchase": "1.00",
+    "settlementAmount actual amount": "9.00"
+},
+
+
+
+
+{
+  "type": "merchant request to purchase data",
+
+  "amount": 100,
+  "product": "Data",
+  "productId": 2
+},
+{
+    "type": "merchant response to purchase data",
+    "status code": 200,
+
+   
+    "success": true,
+    "commission": "10.00",
+    "settlementAmount": "90.00",
+
+
+    "Observation": "The commission is calculated as 10% of the purchase amount, which is 10.00. The settlement amount is the purchase amount minus the commission, which is 90.00.",
+    "commission deducted for data purchase": "10.00",
+    "settlementAmount actual amount": "90.00"
+}
+]

@@ -1,0 +1,10 @@
+ [
+    {
+    "response": "success",
+    "status": 200,
+    "message": "No pending transactions found"
+    },
+    {
+        "fault": "There are several pending transactions but the API only returns the admin's pending transactions instead of listing all accounts including merchants." 
+    }
+]

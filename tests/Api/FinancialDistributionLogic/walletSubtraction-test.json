@@ -1,0 +1,37 @@
+[
+{
+    "type": "merchant account before airtime purchase wallet subtraction",
+
+    "id": 1,
+    "merchantName": "Ava Finance",
+    "email": "merchant@flashgateway.local",
+    "role": "merchant",
+    "walletBalance": 5000,
+    "status": "active" 
+},
+{
+  "type": "request",
+
+  "amount": 10,
+  "product": "Airtime",
+  "productId": 1
+},
+{
+    "type": "response",
+
+    "status code": 200,
+    "success": true,
+    "commission": "1.00",
+    "settlementAmount": "9.00"
+},
+{
+    "type": "merchant account after airtime purchase wallet subtraction",
+    
+    "id": 1,
+    "merchantName": "Ava Finance",
+    "email": "merchant@flashgateway.local",
+    "role": "merchant",
+    "walletBalance": 4990,
+    "status": "active"
+}
+]

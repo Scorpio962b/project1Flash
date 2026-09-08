@@ -1,0 +1,28 @@
+{
+    "request": [
+{
+  "senderAccountId": 1,
+  "serviceType": "sms",
+  "network": "MTN",
+  "phoneNumber": "+27821205567",
+  "amount": 10.112
+}
+],
+
+
+    "response": {
+    "success": true,
+    "status": 200,
+
+        "transaction": {
+        
+        "id": 5,
+        "merchantId": 1,
+        "amount": 10.112,
+        "transactionType": "service_purchase",
+        "service_type": "sms",
+        "status": "completed",
+        "createdAt": "2026-08-24T13:20:03.157Z"
+       }
+    }
+}

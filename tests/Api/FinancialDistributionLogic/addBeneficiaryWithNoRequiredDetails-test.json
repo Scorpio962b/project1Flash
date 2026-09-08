@@ -1,0 +1,16 @@
+[
+{
+  "type": "request",
+  
+  "beneficiaryName": "",
+  "bank": "",
+  "accountNumber": "9550567890",
+  "reference": "Hardware expenses"
+},
+{
+  "type": "response",
+  "status code": 400,
+
+  "message": "Beneficiary name and account number are required"
+}
+]

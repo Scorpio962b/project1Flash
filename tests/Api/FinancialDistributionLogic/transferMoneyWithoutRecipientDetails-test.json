@@ -1,0 +1,16 @@
+{
+    "request": [
+{
+  "senderAccountId": 1,
+  "recipientAccountId": 0,
+  "amount": 1,
+  "reference": ""
+}
+],
+
+    "response": {
+    "status code": 400,
+    "message": "Recipient details are required for one-off transfers"
+
+    }
+}

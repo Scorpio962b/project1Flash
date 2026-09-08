@@ -1,0 +1,28 @@
+[
+{
+    "type": "account balance",
+
+    "id": 1,
+    "merchantName": "Ava Finance",
+    "email": "merchant@flashgateway.local",
+    "role": "merchant",
+    "walletBalance": 5000,
+    "status": "active"
+},
+{
+  "type": "purchase attempt",
+
+  "senderAccountId": 1,
+  "serviceType": "airtime",
+  "network": "Vodacom",
+  "phoneNumber": "+27821234567",
+  "amount": 60000
+},
+
+{
+  "type": "response",
+  
+  "status code": 400,
+  "message": "Insufficient balance"
+}
+]

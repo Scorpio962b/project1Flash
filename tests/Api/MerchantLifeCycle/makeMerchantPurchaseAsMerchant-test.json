@@ -1,0 +1,17 @@
+{
+    "request": [
+{
+  "amount": 10,
+  "product": "Airtime",
+  "productId": 1
+}],
+
+    "response": 
+{
+    "success": true,
+    "status": 200,
+    
+    "commission": "1.00",
+    "settlementAmount": "9.00"
+}
+} 

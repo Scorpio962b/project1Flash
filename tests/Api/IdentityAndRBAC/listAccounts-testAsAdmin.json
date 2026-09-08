@@ -1,0 +1,17 @@
+[
+    
+    {
+        "type": "response",
+        "message": "Available accounts",
+        "status code": 200,
+
+        "id": 2,
+        "full_name": "Northstar Pay",
+        "email": "admin@flashgateway.local",
+        "balance": 10000,
+        "status": "active"
+    },
+    {
+        "fault": "There are several accounts but the API only returns the admin's account instead of listing all accounts including merchants."
+    }
+]

@@ -1,0 +1,15 @@
+[{
+    
+    "id": 1,
+    "merchantName": "Ava Finance",
+    "email": "merchant@flashgateway.local",
+    "role": "merchant",
+    "walletBalance": 5000,
+    "status": "active"
+    
+},
+{
+    "response": "success",
+    "status": 200
+}
+]

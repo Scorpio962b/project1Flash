@@ -1,0 +1,33 @@
+[
+{
+    "type": "request", 
+    "message": "Add a new payment method as merchant."
+},
+
+{
+  "type": "Method to add",
+
+  "cardNumber": "7685940392",
+  "nickname": "Visa",
+  "expiryDate": "12/26", 
+  "cvv": "248"
+},
+ 
+{
+    "type": "Method to added",
+    "message": "Request successful.",
+    "status code": 200,
+
+    "id": 4,
+    "merchantId": 1,
+    "nickname": "Visa",
+    "cardNumber": "**** 0392",
+    "expiryDate": "12/26",
+    "status": "Active"
+},
+{
+  "fault": "Merchants can add payment methods while only admin must do so."
+}
+]
+
+

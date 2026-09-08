@@ -1,0 +1,12 @@
+[
+    {
+        "type": "request", 
+        "message": "delete a payment method.",
+        "id": 3
+    },
+    {
+        "type": "response",
+        "success": true,
+        "status code": 200
+    }
+]

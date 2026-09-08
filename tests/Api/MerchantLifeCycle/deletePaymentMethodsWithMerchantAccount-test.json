@@ -1,0 +1,14 @@
+[
+    {
+        "type": "request", 
+        "message": "delete a payment method.",
+        "id": 4
+    },
+    {
+        "type": "response",
+        "success": true,
+        "status code": 200,
+
+        "fault": "Merchants can delete payment methods while only admin must do so."
+    }
+]

@@ -1,0 +1,23 @@
+
+
+[
+  {
+    "type": "request",
+    "email": "polite@example.com",
+    "fullName": "Polite Dlamini",
+    "msisdn": "+27123234567",
+    "password": "Password123!"
+  },
+  {
+    "type": "response",
+    "message": "Registration successful",
+    
+    "user": {
+      "id": 3,
+      "email": "polite@example.com",
+      "msisdn": "+27123234567",
+      "status": 201
+    }
+  }
+]
+

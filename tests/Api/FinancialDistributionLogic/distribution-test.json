@@ -1,0 +1,67 @@
+[
+{
+    "type": "merchant account before transfer",
+
+    "id": 1,
+    "merchantName": "Ava Finance",
+    "email": "merchant@flashgateway.local",
+    "role": "merchant",
+    "walletBalance": 4990,
+    "status": "active"
+},
+{
+    "type": "recipient account before transfer",
+
+    "id": 2,
+    "merchantName": "Northstar Pay",
+    "email": "admin@flashgateway.local",
+    "role": "admin",
+    "walletBalance": 10000,
+    "status": "active"
+},
+{
+    "type": "request to transfer",
+
+    "senderAccountId": 1,
+    "recipientAccountId": 2,
+    "amount": 100,
+    "reference": "Settlements"
+
+},
+{
+    "type": "response after transfer",
+
+    "id": 4,
+    "merchantId": 1,
+    "amount": 100,
+    "transactionType": "transfer",
+    "status": "completed",
+    "reference": "Settlement",
+    "recipientName": "Northstar Pay",
+    "recipientAccountNumber": "ACC-2",
+    "recipientBank": null,
+    "createdAt": "2026-09-01T14:19:51.718Z"
+},
+
+{
+    "type": "merchant account after transfer",
+
+    "id": 1,
+    "merchantName": "Ava Finance",
+    "email": "merchant@flashgateway.local",
+    "role": "merchant",
+    "walletBalance": 4890,
+    "status": "active"
+
+},
+{
+    "type": "recipient account after transfer",
+
+    "id": 2,
+    "merchantName": "Northstar Pay",
+    "email": "admin@flashgateway.local",
+    "role": "admin",
+    "walletBalance": 10100,
+    "status": "active"
+}
+]

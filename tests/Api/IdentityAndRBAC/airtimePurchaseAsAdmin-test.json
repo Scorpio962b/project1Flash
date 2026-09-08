@@ -1,0 +1,32 @@
+{
+    "request": [
+{
+  "senderAccountId": 2,
+  "serviceType": "airtime",
+  "network": "Vodacom",
+  "phoneNumber": "+27821234567",
+  "amount": 10
+}
+],
+
+
+    "response": {
+    "success": true,
+    "status": 200,
+
+        "transaction": {
+        "id": 3,
+        "merchantId": 2,
+        "amount": 10,
+        "transactionType": "service_purchase",
+        "service_type": "airtime",
+        "status": "completed",
+        "createdAt": "2026-08-21T13:27:39.086Z"
+       },
+
+        "fault": "Admin can only make airtime, sms and data purchases itself yet not on behalf of merchants.",
+        "message when purchasing for merchants": "Sender account mismatch",
+        "status code when purchasing for merchants": 403
+
+}
+}

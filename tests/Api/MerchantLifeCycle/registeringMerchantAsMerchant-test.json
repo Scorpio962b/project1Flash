@@ -1,0 +1,23 @@
+
+
+[
+  {
+    "type": "request",
+    "email": "Tumelo@example.com",
+    "fullName": "Tumelo Dlamini",
+    "msisdn": "+277258945670",
+    "password": "Password123!"
+  },
+  {
+    "type": "response",
+    "message": "Registration successful",
+    
+    "user": {
+        "id": 4,
+        "email": "Tumelo@example.com",
+        "msisdn": "+277258945670",
+        "status": 201
+    }
+  }
+]
+

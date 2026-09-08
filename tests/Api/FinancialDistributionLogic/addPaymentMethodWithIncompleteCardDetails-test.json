@@ -1,0 +1,26 @@
+[
+{
+  "type": "expected request",
+
+  "cardNumber": "4111111111111111",
+  "nickname": "Primary Visa",
+  "expiryDate": "12/26",
+  "cvv": "123"
+},
+
+{
+  "type": "actual request",
+
+  "cardNumber": "",
+  "nickname": "",
+  "expiryDate": "12/27",
+  "cvv": "123"
+},
+
+{
+    "type": "response",
+
+    "status code": 400,
+    "message": "Payment method details are required"
+}
+]

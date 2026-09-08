@@ -1,0 +1,14 @@
+{
+  "testCaseId": "API-ML-11",
+  "status": 200,
+  "body": [
+    {
+      "id": "<database-derived>",
+      "beneficiaryName": "<database-derived>",
+      "bank": "<database-derived>",
+      "accountNumber": "<database-derived>",
+      "reference": "<database-derived>"
+    }
+  ],
+  "reconciliationRule": "API-ML-11: Reconcile the API response from /beneficiaries against the SQL validation for DB-TC-11; the API result must satisfy this case's expected database rule: Only that merchant's beneficiaries are returned."
+}

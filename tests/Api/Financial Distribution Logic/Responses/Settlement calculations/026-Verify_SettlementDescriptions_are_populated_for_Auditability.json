@@ -1,0 +1,13 @@
+{
+  "testCaseId": "TC-SQL-026",
+  "status": 200,
+  "body": [
+    {
+      "id": "<database-derived>",
+      "merchantId": "<database-derived>",
+      "amount": "<database-derived>",
+      "description": "<database-derived>"
+    }
+  ],
+  "reconciliationRule": "TC-SQL-026: Reconcile the API response from /api/v1/merchants/{id}/settlements against the SQL validation for TC-SQL-026; the API result must satisfy this case's expected database rule: 0 rows are returned."
+}

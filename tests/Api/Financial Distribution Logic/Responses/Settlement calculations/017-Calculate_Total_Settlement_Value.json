@@ -1,0 +1,13 @@
+{
+  "testCaseId": "TC-SQL-017",
+  "status": 200,
+  "body": [
+    {
+      "id": "<database-derived>",
+      "merchantId": "<database-derived>",
+      "amount": "<database-derived>",
+      "description": "<database-derived>"
+    }
+  ],
+  "reconciliationRule": "TC-SQL-017: Reconcile the API response from /api/v1/merchants/{id}/settlements against the SQL validation for TC-SQL-017; the API result must satisfy this case's expected database rule: The result equals the approved total settlement value for the test dataset."
+}

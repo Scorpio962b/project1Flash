@@ -1,0 +1,32 @@
+{
+  "testCaseId": "API-ML-05",
+  "databaseTestCase": "DB-TC-05",
+  "layer": "API",
+  "group": "Merchant Lifecycle",
+  "priority": "P0",
+  "title": "API-ML-05",
+  "apiCoverage": "direct",
+  "baseUrl": "http://localhost:4001",
+  "method": "POST",
+  "endpoint": "/api/v1/auth/login",
+  "requestBody": {
+    "email": "merchant@flashgateway.local",
+    "password": "Password123!"
+  },
+  "expectedStatus": 200,
+  "expectedResponseFile": "../Responses/API-ML-05_response.json",
+  "expectedResponse": {
+    "token": "<JWT>",
+    "user": {
+      "id": "<database-derived>",
+      "email": "<request.email>",
+      "role": "<database-derived>",
+      "status": "<database-derived>"
+    }
+  },
+  "sqlValidationFile": "../../SQL/DB-TC-05_API-ML-05_Valid_merchant_login.sql",
+  "sqlValidation": "SELECT id, merchantName, email, role, status FROM dbo.Merchants WHERE email='merchant@flashgateway.local';",
+  "sqlExpectedResult": "The login account maps to an active merchant with the correct role.",
+  "dbReconciliation": "API-ML-05: Reconcile the API response from /api/v1/auth/login against the SQL validation for DB-TC-05; the API result must satisfy this case's expected database rule: The login account maps to an active merchant with the correct role.",
+  "notes": "Endpoint and response contract taken only from the supplied Swagger. Response values shown as <database-derived> or <JWT> must be replaced/validated against the live API and SQL result."
+}

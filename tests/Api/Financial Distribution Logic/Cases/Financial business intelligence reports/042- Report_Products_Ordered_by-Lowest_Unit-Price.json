@@ -1,0 +1,24 @@
+{
+  "testCaseId": "TC-SQL-042",
+  "databaseTestCase": "TC-SQL-042",
+  "layer": "API",
+  "group": "Business Intelligence Reports",
+  "priority": "P2",
+  "title": "Report products ordered by lowest unit price",
+  "apiCoverage": "unsupported",
+  "baseUrl": "http://localhost:4001",
+  "method": null,
+  "endpoint": null,
+  "requestBody": null,
+  "expectedStatus": null,
+  "expectedResponseFile": "../Responses/TC-SQL-042_response.json",
+  "expectedResponse": {
+    "supportedBySwagger": false,
+    "message": "No product/report endpoint is defined in the supplied Swagger; this SQL case remains a database-only validation."
+  },
+  "sqlValidationFile": "../../SQL/TC-SQL-042_Report_products_ordered_by_lowest_unit_price.sql",
+  "sqlValidation": "SELECT id, name, productType, brand, unitPrice\nFROM dbo.Products\nORDER BY unitPrice ASC;",
+  "sqlExpectedResult": "Products are returned from lowest to highest unit price.",
+  "dbReconciliation": "TC-SQL-042: No direct Swagger endpoint is available; retain the SQL result as the authoritative database validation and do not infer an API contract. Expected SQL outcome: Products are returned from lowest to highest unit price.",
+  "notes": "This database case has no direct product/report endpoint in the supplied Swagger, so it is retained as an explicit coverage gap rather than inventing an endpoint."
+}

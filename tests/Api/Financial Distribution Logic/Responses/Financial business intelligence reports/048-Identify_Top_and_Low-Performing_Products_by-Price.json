@@ -1,0 +1,10 @@
+{
+  "testCaseId": "TC-SQL-048",
+  "status": 200,
+  "body": {
+    "success": true,
+    "commission": "<database/application-derived>",
+    "settlementAmount": "<database/application-derived>"
+  },
+  "reconciliationRule": "TC-SQL-048: Reconcile the API response from /api/v1/merchants/{id}/purchase against the SQL validation for TC-SQL-048; the API result must satisfy this case's expected database rule: The report returns the highest- and lowest-priced products based on the available product data."
+}

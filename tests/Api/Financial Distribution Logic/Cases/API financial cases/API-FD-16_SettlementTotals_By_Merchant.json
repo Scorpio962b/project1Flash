@@ -1,0 +1,28 @@
+{
+  "testCaseId": "API-FD-16",
+  "databaseTestCase": "DB-TC-31",
+  "layer": "API",
+  "group": "Financial & Distribution Logic",
+  "priority": "P0",
+  "title": "API-FD-16",
+  "apiCoverage": "derived",
+  "baseUrl": "http://localhost:4001",
+  "method": "GET",
+  "endpoint": "/api/v1/merchants/{id}/settlements",
+  "requestBody": null,
+  "expectedStatus": 200,
+  "expectedResponseFile": "../Responses/API-FD-16_response.json",
+  "expectedResponse": [
+    {
+      "id": "<database-derived>",
+      "merchantId": "<database-derived>",
+      "amount": "<database-derived>",
+      "description": "<database-derived>"
+    }
+  ],
+  "sqlValidationFile": "../../SQL/DB-TC-31_API-FD-16_Settlement_totals_by_merchant.sql",
+  "sqlValidation": "SELECT merchantId,ROUND(SUM(amount),2) settlementTotal FROM dbo.Settlements GROUP BY merchantId ORDER BY merchantId;",
+  "sqlExpectedResult": "Totals match expected API settlement values.",
+  "dbReconciliation": "API-FD-16: Reconcile the API response from /api/v1/merchants/{id}/settlements against the SQL validation for DB-TC-31; the API result must satisfy this case's expected database rule: Totals match expected API settlement values.",
+  "notes": "Endpoint and response contract taken only from the supplied Swagger. Response values shown as <database-derived> or <JWT> must be replaced/validated against the live API and SQL result."
+}

@@ -1,0 +1,29 @@
+{
+  "testCaseId": "TC-SQL-050",
+  "databaseTestCase": "TC-SQL-050",
+  "layer": "API",
+  "group": "Business Intelligence Reports",
+  "priority": "P2",
+  "title": "Create a combined merchant financial performance report",
+  "apiCoverage": "derived",
+  "baseUrl": "http://localhost:4001",
+  "method": "GET",
+  "endpoint": "/accounts",
+  "requestBody": null,
+  "expectedStatus": 200,
+  "expectedResponseFile": "../Responses/TC-SQL-050_response.json",
+  "expectedResponse": [
+    {
+      "id": "<database-derived>",
+      "email": "<database-derived>",
+      "role": "<database-derived>",
+      "walletBalance": "<database-derived>",
+      "status": "<database-derived>"
+    }
+  ],
+  "sqlValidationFile": "../../SQL/TC-SQL-050_Create_a_combined_merchant_financial_performance_report.sql",
+  "sqlValidation": "SELECT\n    m.id,\n    m.merchantName,\n    m.status,\n    m.walletBalance,\n    COUNT(DISTINCT wt.id) AS transactionCount,\n    ROUND(COALESCE(SUM(CASE WHEN wt.status='completed' THEN wt.amount ELSE 0 END),0),2) AS completedTransactionValue,\n    COUNT(DISTINCT s.id) AS settlementCount,\n    ROUND(COALESCE(SUM(s.amount),0),2) AS settlementTotal\nFROM dbo.Merchants m\nLEFT JOIN dbo.WalletTransactions wt ON wt.merchantId = m.id\nLEFT JOIN dbo.Settlements s ON s.merchantId = m.id\nGROUP BY m.id, m.merchantName, m.status, m.walletBalance\nORDER BY completedTransactionValue DESC, settlementTotal DESC;",
+  "sqlExpectedResult": "Each merchant appears once, with correctly calculated transaction and settlement totals. COUNT(DISTINCT) prevents the two joins from multiplying amounts.",
+  "dbReconciliation": "TC-SQL-050: Reconcile the API response from /accounts against the SQL validation for TC-SQL-050; the API result must satisfy this case's expected database rule: Each merchant appears once, with correctly calculated transaction and settlement totals. COUNT(DISTINCT) prevents the two joins from multiplying amounts.",
+  "notes": "Endpoint and response contract taken only from the supplied Swagger. Response values shown as <database-derived> or <JWT> must be replaced/validated against the live API and SQL result."
+}

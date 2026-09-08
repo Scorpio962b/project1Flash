@@ -1,0 +1,24 @@
+{
+  "testCaseId": "API-ML-07",
+  "databaseTestCase": "DB-TC-07",
+  "layer": "API",
+  "group": "Merchant Lifecycle",
+  "priority": "P0",
+  "title": "API-ML-07",
+  "apiCoverage": "direct",
+  "baseUrl": "http://localhost:4001",
+  "method": "GET",
+  "endpoint": "/api/v1/merchants/{id}/balance",
+  "requestBody": null,
+  "expectedStatus": 200,
+  "expectedResponseFile": "../Responses/API-ML-07_response.json",
+  "expectedResponse": {
+    "merchantId": "<id>",
+    "walletBalance": "<database-derived>"
+  },
+  "sqlValidationFile": "../../SQL/DB-TC-07_API-ML-07_Merchant_wallet_balance_retrieval.sql",
+  "sqlValidation": "SELECT id, merchantName, walletBalance FROM dbo.Merchants ORDER BY id;",
+  "sqlExpectedResult": "Values match the API wallet balance for the same merchant.",
+  "dbReconciliation": "API-ML-07: Reconcile the API response from /api/v1/merchants/{id}/balance against the SQL validation for DB-TC-07; the API result must satisfy this case's expected database rule: Values match the API wallet balance for the same merchant.",
+  "notes": "Endpoint and response contract taken only from the supplied Swagger. Response values shown as <database-derived> or <JWT> must be replaced/validated against the live API and SQL result."
+}

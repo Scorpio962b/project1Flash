@@ -1,0 +1,24 @@
+{
+  "testCaseId": "API-ML-02",
+  "databaseTestCase": "DB-TC-02",
+  "layer": "API",
+  "group": "Merchant Lifecycle",
+  "priority": "P0",
+  "title": "API-ML-02",
+  "apiCoverage": "direct",
+  "baseUrl": "http://localhost:4001",
+  "method": "POST",
+  "endpoint": "/api/v1/auth/register",
+  "requestBody": null,
+  "expectedStatus": 409,
+  "expectedResponseFile": "../Responses/API-ML-02_response.json",
+  "expectedResponse": {
+    "success": false,
+    "message": "Email or MSISDN already registered"
+  },
+  "sqlValidationFile": "../../SQL/DB-TC-02_API-ML-02_Register_merchant_with_duplicate_email.sql",
+  "sqlValidation": "SELECT email, COUNT(*) AS duplicateCount FROM dbo.Merchants GROUP BY email HAVING COUNT(*) > 1;",
+  "sqlExpectedResult": "0 rows.",
+  "dbReconciliation": "API-ML-02: Reconcile the API response from /api/v1/auth/register against the SQL validation for DB-TC-02; the API result must satisfy this case's expected database rule: 0 rows.",
+  "notes": "Endpoint and response contract taken only from the supplied Swagger. Response values shown as <database-derived> or <JWT> must be replaced/validated against the live API and SQL result."
+}

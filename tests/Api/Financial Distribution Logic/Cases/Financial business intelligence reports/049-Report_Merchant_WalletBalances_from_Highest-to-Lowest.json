@@ -1,0 +1,29 @@
+{
+  "testCaseId": "TC-SQL-049",
+  "databaseTestCase": "TC-SQL-049",
+  "layer": "API",
+  "group": "Business Intelligence Reports",
+  "priority": "P2",
+  "title": "Report merchant wallet balances from highest to lowest",
+  "apiCoverage": "derived",
+  "baseUrl": "http://localhost:4001",
+  "method": "GET",
+  "endpoint": "/accounts",
+  "requestBody": null,
+  "expectedStatus": 200,
+  "expectedResponseFile": "../Responses/TC-SQL-049_response.json",
+  "expectedResponse": [
+    {
+      "id": "<database-derived>",
+      "email": "<database-derived>",
+      "role": "<database-derived>",
+      "walletBalance": "<database-derived>",
+      "status": "<database-derived>"
+    }
+  ],
+  "sqlValidationFile": "../../SQL/TC-SQL-049_Report_merchant_wallet_balances_from_highest_to_lowest.sql",
+  "sqlValidation": "SELECT id, merchantName, walletBalance, status\nFROM dbo.Merchants\nORDER BY walletBalance DESC;",
+  "sqlExpectedResult": "Merchants are correctly ranked by wallet balance.",
+  "dbReconciliation": "TC-SQL-049: Reconcile the API response from /accounts against the SQL validation for TC-SQL-049; the API result must satisfy this case's expected database rule: Merchants are correctly ranked by wallet balance.",
+  "notes": "Endpoint and response contract taken only from the supplied Swagger. Response values shown as <database-derived> or <JWT> must be replaced/validated against the live API and SQL result."
+}

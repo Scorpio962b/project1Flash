@@ -1,0 +1,29 @@
+{
+  "testCaseId": "TC-SQL-028",
+  "databaseTestCase": "TC-SQL-028",
+  "layer": "API",
+  "group": "Settlement Math Verification",
+  "priority": "P0",
+  "title": "Check whether a commission field exists before commission reconciliation",
+  "apiCoverage": "derived",
+  "baseUrl": "http://localhost:4001",
+  "method": "POST",
+  "endpoint": "/api/v1/merchants/{id}/purchase",
+  "requestBody": {
+    "amount": 10,
+    "product": "Airtime",
+    "productId": 2
+  },
+  "expectedStatus": 200,
+  "expectedResponseFile": "../Responses/TC-SQL-028_response.json",
+  "expectedResponse": {
+    "success": true,
+    "commission": "<database/application-derived>",
+    "settlementAmount": "<database/application-derived>"
+  },
+  "sqlValidationFile": "../../SQL/TC-SQL-028_Check_whether_a_commission_field_exists_before_commission_reconciliation.sql",
+  "sqlValidation": "SELECT TABLE_SCHEMA, TABLE_NAME, COLUMN_NAME, DATA_TYPE\nFROM INFORMATION_SCHEMA.COLUMNS\nWHERE LOWER(COLUMN_NAME) LIKE '%commission%'\nORDER BY TABLE_SCHEMA, TABLE_NAME, COLUMN_NAME;",
+  "sqlExpectedResult": "At least one commission-related column is returned if commission percentage is a database requirement. If no rows are returned, record this as a schema/data-gap rather than inventing a commission calculation.",
+  "dbReconciliation": "TC-SQL-028: Reconcile the API response from /api/v1/merchants/{id}/purchase against the SQL validation for TC-SQL-028; the API result must satisfy this case's expected database rule: At least one commission-related column is returned if commission percentage is a database requirement. If no rows are returned, record this as a schema/data-gap rather than inventing a commission calculation.",
+  "notes": "Endpoint and response contract taken only from the supplied Swagger. Response values shown as <database-derived> or <JWT> must be replaced/validated against the live API and SQL result."
+}

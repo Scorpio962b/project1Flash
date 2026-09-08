@@ -1,0 +1,9 @@
+{
+  "testCaseId": "API-ML-01",
+  "status": 201,
+  "body": {
+    "success": true,
+    "message": "Merchant registered"
+  },
+  "reconciliationRule": "API-ML-01: Reconcile the API response from /api/v1/auth/register against the SQL validation for DB-TC-01; the API result must satisfy this case's expected database rule: A matching merchant row exists with the expected identity data."
+}

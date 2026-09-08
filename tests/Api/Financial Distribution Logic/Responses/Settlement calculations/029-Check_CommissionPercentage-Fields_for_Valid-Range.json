@@ -1,0 +1,10 @@
+{
+  "testCaseId": "TC-SQL-029",
+  "status": 200,
+  "body": {
+    "success": true,
+    "commission": "<database/application-derived>",
+    "settlementAmount": "<database/application-derived>"
+  },
+  "reconciliationRule": "TC-SQL-029: Reconcile the API response from /api/v1/merchants/{id}/purchase against the SQL validation for TC-SQL-029; the API result must satisfy this case's expected database rule: 0 invalid commission values are returned. If 'NO COMMISSION COLUMN FOUND' appears, commission validation cannot be performed from the supplied schema."
+}

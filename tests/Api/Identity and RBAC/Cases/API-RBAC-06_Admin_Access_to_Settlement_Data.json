@@ -1,0 +1,28 @@
+{
+  "testCaseId": "API-RBAC-06",
+  "databaseTestCase": "DB-TC-41",
+  "layer": "API",
+  "group": "Identity & RBAC",
+  "priority": "P1",
+  "title": "API-RBAC-06",
+  "apiCoverage": "direct",
+  "baseUrl": "http://localhost:4001",
+  "method": "GET",
+  "endpoint": "/api/v1/merchants/{id}/settlements",
+  "requestBody": null,
+  "expectedStatus": 200,
+  "expectedResponseFile": "../Responses/API-RBAC-06_response.json",
+  "expectedResponse": [
+    {
+      "id": "<database-derived>",
+      "merchantId": "<database-derived>",
+      "amount": "<database-derived>",
+      "description": "<database-derived>"
+    }
+  ],
+  "sqlValidationFile": "../../SQL/DB-TC-41_API-RBAC-06_Admin_access_to_settlement_data.sql",
+  "sqlValidation": "SELECT s.*,m.email,m.role FROM dbo.Settlements s JOIN dbo.Merchants m ON m.id=s.merchantId WHERE m.role='admin';",
+  "sqlExpectedResult": "Admin settlement rows are correctly owned by the admin account.",
+  "dbReconciliation": "API-RBAC-06: Reconcile the API response from /api/v1/merchants/{id}/settlements against the SQL validation for DB-TC-41; the API result must satisfy this case's expected database rule: Admin settlement rows are correctly owned by the admin account.",
+  "notes": "Endpoint and response contract taken only from the supplied Swagger. Response values shown as <database-derived> or <JWT> must be replaced/validated against the live API and SQL result."
+}

@@ -1,0 +1,29 @@
+{
+  "testCaseId": "API-FD-01",
+  "databaseTestCase": "DB-TC-16",
+  "layer": "API",
+  "group": "Financial & Distribution Logic",
+  "priority": "P0",
+  "title": "API-FD-01",
+  "apiCoverage": "direct",
+  "baseUrl": "http://localhost:4001",
+  "method": "POST",
+  "endpoint": "/api/v1/merchants/{id}/purchase",
+  "requestBody": {
+    "amount": 10,
+    "product": "Airtime",
+    "productId": 2
+  },
+  "expectedStatus": 200,
+  "expectedResponseFile": "../Responses/API-FD-01_response.json",
+  "expectedResponse": {
+    "success": true,
+    "commission": "<database/application-derived>",
+    "settlementAmount": "<database/application-derived>"
+  },
+  "sqlValidationFile": "../../SQL/DB-TC-16_API-FD-01_Merchant_purchase.sql",
+  "sqlValidation": "SELECT * FROM dbo.WalletTransactions WHERE merchantId=1 ORDER BY id DESC;",
+  "sqlExpectedResult": "The API purchase has a corresponding wallet transaction.",
+  "dbReconciliation": "API-FD-01: Reconcile the API response from /api/v1/merchants/{id}/purchase against the SQL validation for DB-TC-16; the API result must satisfy this case's expected database rule: The API purchase has a corresponding wallet transaction.",
+  "notes": "Endpoint and response contract taken only from the supplied Swagger. Response values shown as <database-derived> or <JWT> must be replaced/validated against the live API and SQL result."
+}

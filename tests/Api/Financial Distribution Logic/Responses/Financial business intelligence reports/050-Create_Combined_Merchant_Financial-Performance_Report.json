@@ -1,0 +1,14 @@
+{
+  "testCaseId": "TC-SQL-050",
+  "status": 200,
+  "body": [
+    {
+      "id": "<database-derived>",
+      "email": "<database-derived>",
+      "role": "<database-derived>",
+      "walletBalance": "<database-derived>",
+      "status": "<database-derived>"
+    }
+  ],
+  "reconciliationRule": "TC-SQL-050: Reconcile the API response from /accounts against the SQL validation for TC-SQL-050; the API result must satisfy this case's expected database rule: Each merchant appears once, with correctly calculated transaction and settlement totals. COUNT(DISTINCT) prevents the two joins from multiplying amounts."
+}

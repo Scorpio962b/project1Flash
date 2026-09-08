@@ -1,0 +1,14 @@
+{
+  "testCaseId": "TC-SQL-039",
+  "status": 200,
+  "body": [
+    {
+      "id": "<database-derived>",
+      "nickname": "<database-derived>",
+      "cardNumber": "<masked-card>",
+      "expiryDate": "<database-derived>",
+      "status": "<database-derived>"
+    }
+  ],
+  "reconciliationRule": "TC-SQL-039: Reconcile the API response from /payment-methods against the SQL validation for TC-SQL-039; the API result must satisfy this case's expected database rule: 0 rows are returned."
+}

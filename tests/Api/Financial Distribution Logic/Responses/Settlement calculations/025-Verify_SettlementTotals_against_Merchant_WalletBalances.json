@@ -1,0 +1,9 @@
+{
+  "testCaseId": "TC-SQL-025",
+  "status": 200,
+  "body": {
+    "merchantId": "<id>",
+    "walletBalance": "<database-derived>"
+  },
+  "reconciliationRule": "TC-SQL-025: Reconcile the API response from /api/v1/merchants/{id}/balance against the SQL validation for TC-SQL-025; the API result must satisfy this case's expected database rule: The resulting values are compared with the approved business rule for whether settlements reduce wallet balance."
+}

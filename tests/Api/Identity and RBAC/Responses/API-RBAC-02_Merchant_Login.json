@@ -1,0 +1,14 @@
+{
+  "testCaseId": "API-RBAC-02",
+  "status": 200,
+  "body": {
+    "token": "<JWT>",
+    "user": {
+      "id": "<database-derived>",
+      "email": "<request.email>",
+      "role": "<database-derived>",
+      "status": "<database-derived>"
+    }
+  },
+  "reconciliationRule": "API-RBAC-02: Reconcile the API response from /api/v1/auth/login against the SQL validation for DB-TC-37; the API result must satisfy this case's expected database rule: Merchant account exists with role=merchant."
+}

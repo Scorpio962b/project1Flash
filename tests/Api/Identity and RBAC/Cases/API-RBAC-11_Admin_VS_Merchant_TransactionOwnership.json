@@ -1,0 +1,31 @@
+{
+  "testCaseId": "API-RBAC-11",
+  "databaseTestCase": "DB-TC-46",
+  "layer": "API",
+  "group": "Identity & RBAC",
+  "priority": "P1",
+  "title": "API-RBAC-11",
+  "apiCoverage": "derived",
+  "baseUrl": "http://localhost:4001",
+  "method": "GET",
+  "endpoint": "/transactions/history",
+  "requestBody": null,
+  "expectedStatus": 200,
+  "expectedResponseFile": "../Responses/API-RBAC-11_response.json",
+  "expectedResponse": [
+    {
+      "id": "<database-derived>",
+      "merchantId": "<database-derived>",
+      "amount": "<database-derived>",
+      "transactionType": "<database-derived>",
+      "serviceType": "<database-derived>",
+      "status": "completed",
+      "reference": "<database-derived>"
+    }
+  ],
+  "sqlValidationFile": "../../SQL/DB-TC-46_API-RBAC-11_Admin_versus_merchant_transaction_ownership.sql",
+  "sqlValidation": "SELECT wt.id,wt.merchantId,m.email,m.role FROM dbo.WalletTransactions wt JOIN dbo.Merchants m ON m.id=wt.merchantId ORDER BY wt.id;",
+  "sqlExpectedResult": "Each transaction belongs to the correct account.",
+  "dbReconciliation": "API-RBAC-11: Reconcile the API response from /transactions/history against the SQL validation for DB-TC-46; the API result must satisfy this case's expected database rule: Each transaction belongs to the correct account.",
+  "notes": "Endpoint and response contract taken only from the supplied Swagger. Response values shown as <database-derived> or <JWT> must be replaced/validated against the live API and SQL result."
+}

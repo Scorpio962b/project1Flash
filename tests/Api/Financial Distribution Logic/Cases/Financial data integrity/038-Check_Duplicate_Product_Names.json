@@ -1,0 +1,29 @@
+{
+  "testCaseId": "TC-SQL-038",
+  "databaseTestCase": "TC-SQL-038",
+  "layer": "API",
+  "group": "Data Hygiene & Constraints",
+  "priority": "P1",
+  "title": "Check duplicate product names",
+  "apiCoverage": "derived",
+  "baseUrl": "http://localhost:4001",
+  "method": "POST",
+  "endpoint": "/api/v1/merchants/{id}/purchase",
+  "requestBody": {
+    "amount": 10,
+    "product": "Airtime",
+    "productId": 2
+  },
+  "expectedStatus": 200,
+  "expectedResponseFile": "../Responses/TC-SQL-038_response.json",
+  "expectedResponse": {
+    "success": true,
+    "commission": "<database/application-derived>",
+    "settlementAmount": "<database/application-derived>"
+  },
+  "sqlValidationFile": "../../SQL/TC-SQL-038_Check_duplicate_product_names.sql",
+  "sqlValidation": "SELECT name, COUNT(*) AS duplicateCount\nFROM dbo.Products\nGROUP BY name\nHAVING COUNT(*) > 1;",
+  "sqlExpectedResult": "0 rows are returned.",
+  "dbReconciliation": "TC-SQL-038: Reconcile the API response from /api/v1/merchants/{id}/purchase against the SQL validation for TC-SQL-038; the API result must satisfy this case's expected database rule: 0 rows are returned.",
+  "notes": "Endpoint and response contract taken only from the supplied Swagger. Response values shown as <database-derived> or <JWT> must be replaced/validated against the live API and SQL result."
+}

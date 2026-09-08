@@ -1,0 +1,9 @@
+{
+  "testCaseId": "TC-SQL-043",
+  "status": null,
+  "body": {
+    "supportedBySwagger": false,
+    "message": "No product/report endpoint is defined in the supplied Swagger; this SQL case remains a database-only validation."
+  },
+  "reconciliationRule": "TC-SQL-043: No direct Swagger endpoint is available; retain the SQL result as the authoritative database validation and do not infer an API contract. Expected SQL outcome: Counts accurately represent products in each productType."
+}

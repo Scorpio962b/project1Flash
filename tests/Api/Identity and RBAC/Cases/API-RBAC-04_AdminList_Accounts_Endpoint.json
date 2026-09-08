@@ -1,0 +1,29 @@
+{
+  "testCaseId": "API-RBAC-04",
+  "databaseTestCase": "DB-TC-39",
+  "layer": "API",
+  "group": "Identity & RBAC",
+  "priority": "P1",
+  "title": "API-RBAC-04",
+  "apiCoverage": "direct",
+  "baseUrl": "http://localhost:4001",
+  "method": "GET",
+  "endpoint": "/accounts",
+  "requestBody": null,
+  "expectedStatus": 200,
+  "expectedResponseFile": "../Responses/API-RBAC-04_response.json",
+  "expectedResponse": [
+    {
+      "id": "<database-derived>",
+      "email": "<database-derived>",
+      "role": "<database-derived>",
+      "walletBalance": "<database-derived>",
+      "status": "<database-derived>"
+    }
+  ],
+  "sqlValidationFile": "../../SQL/DB-TC-39_API-RBAC-04_Admin_list_accounts_endpoint.sql",
+  "sqlValidation": "SELECT id,email,role,walletBalance,status FROM dbo.Merchants ORDER BY id;",
+  "sqlExpectedResult": "Database account list matches the API response for the requested scope.",
+  "dbReconciliation": "API-RBAC-04: Reconcile the API response from /accounts against the SQL validation for DB-TC-39; the API result must satisfy this case's expected database rule: Database account list matches the API response for the requested scope.",
+  "notes": "Endpoint and response contract taken only from the supplied Swagger. Response values shown as <database-derived> or <JWT> must be replaced/validated against the live API and SQL result."
+}

@@ -1,0 +1,31 @@
+{
+  "testCaseId": "API-FD-18",
+  "databaseTestCase": "DB-TC-33",
+  "layer": "API",
+  "group": "Financial & Distribution Logic",
+  "priority": "P0",
+  "title": "API-FD-18",
+  "apiCoverage": "derived",
+  "baseUrl": "http://localhost:4001",
+  "method": "GET",
+  "endpoint": "/transactions/history",
+  "requestBody": null,
+  "expectedStatus": 200,
+  "expectedResponseFile": "../Responses/API-FD-18_response.json",
+  "expectedResponse": [
+    {
+      "id": "<database-derived>",
+      "merchantId": "<database-derived>",
+      "amount": "<database-derived>",
+      "transactionType": "<database-derived>",
+      "serviceType": "<database-derived>",
+      "status": "completed",
+      "reference": "<database-derived>"
+    }
+  ],
+  "sqlValidationFile": "../../SQL/DB-TC-33_API-FD-18_Completed_debit_totals.sql",
+  "sqlValidation": "SELECT merchantId,ROUND(SUM(amount),2) totalDebits FROM dbo.WalletTransactions WHERE status='completed' AND transactionType='debit' GROUP BY merchantId ORDER BY merchantId;",
+  "sqlExpectedResult": "Debit totals match the expected ledger; no rows is valid if no completed debits exist.",
+  "dbReconciliation": "API-FD-18: Reconcile the API response from /transactions/history against the SQL validation for DB-TC-33; the API result must satisfy this case's expected database rule: Debit totals match the expected ledger; no rows is valid if no completed debits exist.",
+  "notes": "Endpoint and response contract taken only from the supplied Swagger. Response values shown as <database-derived> or <JWT> must be replaced/validated against the live API and SQL result."
+}

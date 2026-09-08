@@ -1,0 +1,9 @@
+{
+  "testCaseId": "API-RBAC-05",
+  "status": 403,
+  "body": {
+    "success": false,
+    "message": "Admin role required"
+  },
+  "reconciliationRule": "API-RBAC-05: Reconcile the API response from /api/v1/ledger/metrics against the SQL validation for DB-TC-40; the API result must satisfy this case's expected database rule: 0 rows; failed/unauthorized API actions must not create ownerless transactions."
+}

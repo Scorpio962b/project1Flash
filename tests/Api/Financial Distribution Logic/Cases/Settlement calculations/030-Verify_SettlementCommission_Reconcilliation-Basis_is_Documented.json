@@ -1,0 +1,29 @@
+{
+  "testCaseId": "TC-SQL-030",
+  "databaseTestCase": "TC-SQL-030",
+  "layer": "API",
+  "group": "Settlement Math Verification",
+  "priority": "P0",
+  "title": "Verify settlement/commission reconciliation basis is documented",
+  "apiCoverage": "derived",
+  "baseUrl": "http://localhost:4001",
+  "method": "POST",
+  "endpoint": "/api/v1/merchants/{id}/purchase",
+  "requestBody": {
+    "amount": 10,
+    "product": "Airtime",
+    "productId": 2
+  },
+  "expectedStatus": 200,
+  "expectedResponseFile": "../Responses/TC-SQL-030_response.json",
+  "expectedResponse": {
+    "success": true,
+    "commission": "<database/application-derived>",
+    "settlementAmount": "<database/application-derived>"
+  },
+  "sqlValidationFile": "../../SQL/TC-SQL-030_Verify_settlement-commission_reconciliation_basis_is_documented.sql",
+  "sqlValidation": "SELECT\n    'Settlements' AS tableName,\n    COUNT(*) AS rowCount,\n    ROUND(COALESCE(SUM(amount),0),2) AS amountTotal\nFROM dbo.Settlements\nUNION ALL\nSELECT\n    'WalletTransactions',\n    COUNT(*),\n    ROUND(COALESCE(SUM(amount),0),2)\nFROM dbo.WalletTransactions\nWHERE status = 'completed';",
+  "sqlExpectedResult": "The totals are captured and compared against the approved settlement formula. Any commission component must come from an actual database column/table and not be assumed.",
+  "dbReconciliation": "TC-SQL-030: Reconcile the API response from /api/v1/merchants/{id}/purchase against the SQL validation for TC-SQL-030; the API result must satisfy this case's expected database rule: The totals are captured and compared against the approved settlement formula. Any commission component must come from an actual database column/table and not be assumed.",
+  "notes": "Endpoint and response contract taken only from the supplied Swagger. Response values shown as <database-derived> or <JWT> must be replaced/validated against the live API and SQL result."
+}

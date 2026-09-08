@@ -1,0 +1,31 @@
+{
+  "testCaseId": "TC-SQL-021",
+  "databaseTestCase": "TC-SQL-021",
+  "layer": "API",
+  "group": "Settlement Math Verification",
+  "priority": "P0",
+  "title": "Calculate completed credits per merchant",
+  "apiCoverage": "derived",
+  "baseUrl": "http://localhost:4001",
+  "method": "GET",
+  "endpoint": "/transactions/history",
+  "requestBody": null,
+  "expectedStatus": 200,
+  "expectedResponseFile": "../Responses/TC-SQL-021_response.json",
+  "expectedResponse": [
+    {
+      "id": "<database-derived>",
+      "merchantId": "<database-derived>",
+      "amount": "<database-derived>",
+      "transactionType": "<database-derived>",
+      "serviceType": "<database-derived>",
+      "status": "completed",
+      "reference": "<database-derived>"
+    }
+  ],
+  "sqlValidationFile": "../../SQL/TC-SQL-021_Calculate_completed_credits_per_merchant.sql",
+  "sqlValidation": "SELECT merchantId, ROUND(SUM(amount),2) AS totalCredits\nFROM dbo.WalletTransactions\nWHERE status = 'completed'\n  AND transactionType = 'credit'\nGROUP BY merchantId\nORDER BY merchantId;",
+  "sqlExpectedResult": "Totals match the expected credit ledger for each merchant.",
+  "dbReconciliation": "TC-SQL-021: Reconcile the API response from /transactions/history against the SQL validation for TC-SQL-021; the API result must satisfy this case's expected database rule: Totals match the expected credit ledger for each merchant.",
+  "notes": "Endpoint and response contract taken only from the supplied Swagger. Response values shown as <database-derived> or <JWT> must be replaced/validated against the live API and SQL result."
+}

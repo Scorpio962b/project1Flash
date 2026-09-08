@@ -1,0 +1,28 @@
+{
+  "testCaseId": "API-ML-13",
+  "databaseTestCase": "DB-TC-13",
+  "layer": "API",
+  "group": "Merchant Lifecycle",
+  "priority": "P0",
+  "title": "API-ML-13",
+  "apiCoverage": "direct",
+  "baseUrl": "http://localhost:4001",
+  "method": "GET",
+  "endpoint": "/api/v1/merchants/{id}",
+  "requestBody": null,
+  "expectedStatus": 200,
+  "expectedResponseFile": "../Responses/API-ML-13_response.json",
+  "expectedResponse": {
+    "id": "<id>",
+    "merchantName": "<database-derived>",
+    "email": "<database-derived>",
+    "role": "<database-derived>",
+    "status": "<database-derived>",
+    "walletBalance": "<database-derived>"
+  },
+  "sqlValidationFile": "../../SQL/DB-TC-13_API-ML-13_Merchant_status_active-state_validation.sql",
+  "sqlValidation": "SELECT id, merchantName, status FROM dbo.Merchants ORDER BY id;",
+  "sqlExpectedResult": "Merchant lifecycle status matches the API result.",
+  "dbReconciliation": "API-ML-13: Reconcile the API response from /api/v1/merchants/{id} against the SQL validation for DB-TC-13; the API result must satisfy this case's expected database rule: Merchant lifecycle status matches the API result.",
+  "notes": "Endpoint and response contract taken only from the supplied Swagger. Response values shown as <database-derived> or <JWT> must be replaced/validated against the live API and SQL result."
+}

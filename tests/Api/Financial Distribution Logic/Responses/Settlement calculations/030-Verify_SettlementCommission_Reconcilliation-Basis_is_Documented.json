@@ -1,0 +1,10 @@
+{
+  "testCaseId": "TC-SQL-030",
+  "status": 200,
+  "body": {
+    "success": true,
+    "commission": "<database/application-derived>",
+    "settlementAmount": "<database/application-derived>"
+  },
+  "reconciliationRule": "TC-SQL-030: Reconcile the API response from /api/v1/merchants/{id}/purchase against the SQL validation for TC-SQL-030; the API result must satisfy this case's expected database rule: The totals are captured and compared against the approved settlement formula. Any commission component must come from an actual database column/table and not be assumed."
+}

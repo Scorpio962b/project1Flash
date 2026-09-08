@@ -1,0 +1,29 @@
+{
+  "testCaseId": "TC-SQL-032",
+  "databaseTestCase": "TC-SQL-032",
+  "layer": "API",
+  "group": "Data Hygiene & Constraints",
+  "priority": "P1",
+  "title": "Check duplicate merchant emails",
+  "apiCoverage": "derived",
+  "baseUrl": "http://localhost:4001",
+  "method": "POST",
+  "endpoint": "/api/v1/auth/register",
+  "requestBody": {
+    "email": "billing@swiftcommerce.local",
+    "fullName": "New Merchant",
+    "msisdn": "+27821234567",
+    "password": "Password123!"
+  },
+  "expectedStatus": 409,
+  "expectedResponseFile": "../Responses/TC-SQL-032_response.json",
+  "expectedResponse": {
+    "success": false,
+    "message": "Email or MSISDN already registered"
+  },
+  "sqlValidationFile": "../../SQL/TC-SQL-032_Check_duplicate_merchant_emails.sql",
+  "sqlValidation": "SELECT email, COUNT(*) AS duplicateCount\nFROM dbo.Merchants\nGROUP BY email\nHAVING COUNT(*) > 1;",
+  "sqlExpectedResult": "0 rows are returned.",
+  "dbReconciliation": "TC-SQL-032: Reconcile the API response from /api/v1/auth/register against the SQL validation for TC-SQL-032; the API result must satisfy this case's expected database rule: 0 rows are returned.",
+  "notes": "Endpoint and response contract taken only from the supplied Swagger. Response values shown as <database-derived> or <JWT> must be replaced/validated against the live API and SQL result."
+}

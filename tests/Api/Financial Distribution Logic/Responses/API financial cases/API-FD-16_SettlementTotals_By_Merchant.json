@@ -1,0 +1,13 @@
+{
+  "testCaseId": "API-FD-16",
+  "status": 200,
+  "body": [
+    {
+      "id": "<database-derived>",
+      "merchantId": "<database-derived>",
+      "amount": "<database-derived>",
+      "description": "<database-derived>"
+    }
+  ],
+  "reconciliationRule": "API-FD-16: Reconcile the API response from /api/v1/merchants/{id}/settlements against the SQL validation for DB-TC-31; the API result must satisfy this case's expected database rule: Totals match expected API settlement values."
+}

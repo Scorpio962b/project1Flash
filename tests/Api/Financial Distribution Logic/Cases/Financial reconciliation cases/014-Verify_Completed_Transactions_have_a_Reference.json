@@ -1,0 +1,31 @@
+{
+  "testCaseId": "TC-SQL-014",
+  "databaseTestCase": "TC-SQL-014",
+  "layer": "API",
+  "group": "Financial Reconciliation",
+  "priority": "P0",
+  "title": "Verify completed transactions have a reference",
+  "apiCoverage": "derived",
+  "baseUrl": "http://localhost:4001",
+  "method": "GET",
+  "endpoint": "/transactions/history",
+  "requestBody": null,
+  "expectedStatus": 200,
+  "expectedResponseFile": "../Responses/TC-SQL-014_response.json",
+  "expectedResponse": [
+    {
+      "id": "<database-derived>",
+      "merchantId": "<database-derived>",
+      "amount": "<database-derived>",
+      "transactionType": "<database-derived>",
+      "serviceType": "<database-derived>",
+      "status": "completed",
+      "reference": "<database-derived>"
+    }
+  ],
+  "sqlValidationFile": "../../SQL/TC-SQL-014_Verify_completed_transactions_have_a_reference.sql",
+  "sqlValidation": "SELECT *\nFROM dbo.WalletTransactions\nWHERE status = 'completed'\n  AND (reference IS NULL OR LTRIM(RTRIM(reference)) = '');",
+  "sqlExpectedResult": "0 rows are returned.",
+  "dbReconciliation": "TC-SQL-014: Reconcile the API response from /transactions/history against the SQL validation for TC-SQL-014; the API result must satisfy this case's expected database rule: 0 rows are returned.",
+  "notes": "Endpoint and response contract taken only from the supplied Swagger. Response values shown as <database-derived> or <JWT> must be replaced/validated against the live API and SQL result."
+}

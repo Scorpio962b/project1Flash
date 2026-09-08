@@ -1,0 +1,9 @@
+{
+  "testCaseId": "API-ML-02",
+  "status": 409,
+  "body": {
+    "success": false,
+    "message": "Email or MSISDN already registered"
+  },
+  "reconciliationRule": "API-ML-02: Reconcile the API response from /api/v1/auth/register against the SQL validation for DB-TC-02; the API result must satisfy this case's expected database rule: 0 rows."
+}

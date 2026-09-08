@@ -1,0 +1,23 @@
+{
+  "testCaseId": "API-ML-10",
+  "databaseTestCase": "DB-TC-10",
+  "layer": "API",
+  "group": "Merchant Lifecycle",
+  "priority": "P0",
+  "title": "API-ML-10",
+  "apiCoverage": "direct",
+  "baseUrl": "http://localhost:4001",
+  "method": "DELETE",
+  "endpoint": "/payment-methods/{id}",
+  "requestBody": null,
+  "expectedStatus": 200,
+  "expectedResponseFile": "../Responses/API-ML-10_response.json",
+  "expectedResponse": {
+    "success": true
+  },
+  "sqlValidationFile": "../../SQL/DB-TC-10_API-ML-10_Delete_payment_method.sql",
+  "sqlValidation": "SELECT * FROM dbo.PaymentMethods WHERE id = 3;",
+  "sqlExpectedResult": "The API-deleted record is absent or has the application's inactive/deleted state.",
+  "dbReconciliation": "API-ML-10: Reconcile the API response from /payment-methods/{id} against the SQL validation for DB-TC-10; the API result must satisfy this case's expected database rule: The API-deleted record is absent or has the application's inactive/deleted state.",
+  "notes": "Endpoint and response contract taken only from the supplied Swagger. Response values shown as <database-derived> or <JWT> must be replaced/validated against the live API and SQL result."
+}

@@ -1,0 +1,31 @@
+{
+  "testCaseId": "API-FD-12",
+  "databaseTestCase": "DB-TC-27",
+  "layer": "API",
+  "group": "Financial & Distribution Logic",
+  "priority": "P0",
+  "title": "API-FD-12",
+  "apiCoverage": "direct",
+  "baseUrl": "http://localhost:4001",
+  "method": "GET",
+  "endpoint": "/transactions/history",
+  "requestBody": null,
+  "expectedStatus": 200,
+  "expectedResponseFile": "../Responses/API-FD-12_response.json",
+  "expectedResponse": [
+    {
+      "id": "<database-derived>",
+      "merchantId": "<database-derived>",
+      "amount": "<database-derived>",
+      "transactionType": "<database-derived>",
+      "serviceType": "<database-derived>",
+      "status": "completed",
+      "reference": "<database-derived>"
+    }
+  ],
+  "sqlValidationFile": "../../SQL/DB-TC-27_API-FD-12_Wallet_transaction_history.sql",
+  "sqlValidation": "SELECT * FROM dbo.WalletTransactions WHERE merchantId=2 ORDER BY id;",
+  "sqlExpectedResult": "Database rows reconcile with the API transaction-history response.",
+  "dbReconciliation": "API-FD-12: Reconcile the API response from /transactions/history against the SQL validation for DB-TC-27; the API result must satisfy this case's expected database rule: Database rows reconcile with the API transaction-history response.",
+  "notes": "Endpoint and response contract taken only from the supplied Swagger. Response values shown as <database-derived> or <JWT> must be replaced/validated against the live API and SQL result."
+}

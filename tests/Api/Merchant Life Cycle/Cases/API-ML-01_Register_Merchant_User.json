@@ -1,0 +1,29 @@
+{
+  "testCaseId": "API-ML-01",
+  "databaseTestCase": "DB-TC-01",
+  "layer": "API",
+  "group": "Merchant Lifecycle",
+  "priority": "P0",
+  "title": "API-ML-01",
+  "apiCoverage": "direct",
+  "baseUrl": "http://localhost:4001",
+  "method": "POST",
+  "endpoint": "/api/v1/auth/register",
+  "requestBody": {
+    "email": "newmerchant@example.com",
+    "fullName": "New Merchant",
+    "msisdn": "+27821234567",
+    "password": "Password123!"
+  },
+  "expectedStatus": 201,
+  "expectedResponseFile": "../Responses/API-ML-01_response.json",
+  "expectedResponse": {
+    "success": true,
+    "message": "Merchant registered"
+  },
+  "sqlValidationFile": "../../SQL/DB-TC-01_API-ML-01_Register_merchant_user.sql",
+  "sqlValidation": "SELECT * FROM dbo.Merchants WHERE email = 'billing@swiftcommerce.local';",
+  "sqlExpectedResult": "A matching merchant row exists with the expected identity data.",
+  "dbReconciliation": "API-ML-01: Reconcile the API response from /api/v1/auth/register against the SQL validation for DB-TC-01; the API result must satisfy this case's expected database rule: A matching merchant row exists with the expected identity data.",
+  "notes": "Endpoint and response contract taken only from the supplied Swagger. Response values shown as <database-derived> or <JWT> must be replaced/validated against the live API and SQL result."
+}

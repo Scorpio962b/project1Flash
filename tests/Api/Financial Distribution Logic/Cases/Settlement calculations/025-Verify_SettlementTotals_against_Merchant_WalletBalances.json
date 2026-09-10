@@ -1,0 +1,24 @@
+{
+  "testCaseId": "TC-SQL-025",
+  "databaseTestCase": "TC-SQL-025",
+  "layer": "API",
+  "group": "Settlement Math Verification",
+  "priority": "P0",
+  "title": "Verify settlement totals against merchant wallet balances",
+  "apiCoverage": "derived",
+  "baseUrl": "http://localhost:4001",
+  "method": "GET",
+  "endpoint": "/api/v1/merchants/{id}/balance",
+  "requestBody": null,
+  "expectedStatus": 200,
+  "expectedResponseFile": "../Responses/TC-SQL-025_response.json",
+  "expectedResponse": {
+    "merchantId": "<id>",
+    "walletBalance": "<database-derived>"
+  },
+  "sqlValidationFile": "../../SQL/TC-SQL-025_Verify_settlement_totals_against_merchant_wallet_balances.sql",
+  "sqlValidation": "SELECT\n    m.id,\n    m.merchantName,\n    m.walletBalance,\n    ROUND(COALESCE(SUM(s.amount),0),2) AS settlementTotal\nFROM dbo.Merchants m\nLEFT JOIN dbo.Settlements s ON s.merchantId = m.id\nGROUP BY m.id, m.merchantName, m.walletBalance\nORDER BY m.id;",
+  "sqlExpectedResult": "The resulting values are compared with the approved business rule for whether settlements reduce wallet balance.",
+  "dbReconciliation": "TC-SQL-025: Reconcile the API response from /api/v1/merchants/{id}/balance against the SQL validation for TC-SQL-025; the API result must satisfy this case's expected database rule: The resulting values are compared with the approved business rule for whether settlements reduce wallet balance.",
+  "notes": "Endpoint and response contract taken only from the supplied Swagger. Response values shown as <database-derived> or <JWT> must be replaced/validated against the live API and SQL result."
+}

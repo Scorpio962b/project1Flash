@@ -1,0 +1,9 @@
+{
+  "testCaseId": "API-ML-07",
+  "status": 200,
+  "body": {
+    "merchantId": "<id>",
+    "walletBalance": "<database-derived>"
+  },
+  "reconciliationRule": "API-ML-07: Reconcile the API response from /api/v1/merchants/{id}/balance against the SQL validation for DB-TC-07; the API result must satisfy this case's expected database rule: Values match the API wallet balance for the same merchant."
+}

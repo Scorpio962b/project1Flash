@@ -1,0 +1,28 @@
+{
+  "testCaseId": "TC-SQL-010",
+  "databaseTestCase": "TC-SQL-010",
+  "layer": "API",
+  "group": "Financial Reconciliation",
+  "priority": "P0",
+  "title": "Verify duplicate settlement descriptions are not used for the same merchant",
+  "apiCoverage": "derived",
+  "baseUrl": "http://localhost:4001",
+  "method": "GET",
+  "endpoint": "/api/v1/merchants/{id}/settlements",
+  "requestBody": null,
+  "expectedStatus": 200,
+  "expectedResponseFile": "../Responses/TC-SQL-010_response.json",
+  "expectedResponse": [
+    {
+      "id": "<database-derived>",
+      "merchantId": "<database-derived>",
+      "amount": "<database-derived>",
+      "description": "<database-derived>"
+    }
+  ],
+  "sqlValidationFile": "../../SQL/TC-SQL-010_Verify_duplicate_settlement_descriptions_are_not_used_for_the_same_merchant.sql",
+  "sqlValidation": "SELECT merchantId, description, COUNT(*) AS duplicateCount\nFROM dbo.Settlements\nGROUP BY merchantId, description\nHAVING COUNT(*) > 1;",
+  "sqlExpectedResult": "0 rows are returned.",
+  "dbReconciliation": "TC-SQL-010: Reconcile the API response from /api/v1/merchants/{id}/settlements against the SQL validation for TC-SQL-010; the API result must satisfy this case's expected database rule: 0 rows are returned.",
+  "notes": "Endpoint and response contract taken only from the supplied Swagger. Response values shown as <database-derived> or <JWT> must be replaced/validated against the live API and SQL result."
+}

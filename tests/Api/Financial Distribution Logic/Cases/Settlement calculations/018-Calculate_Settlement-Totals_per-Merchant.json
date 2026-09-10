@@ -1,0 +1,28 @@
+{
+  "testCaseId": "TC-SQL-018",
+  "databaseTestCase": "TC-SQL-018",
+  "layer": "API",
+  "group": "Settlement Math Verification",
+  "priority": "P0",
+  "title": "Calculate settlement totals per merchant",
+  "apiCoverage": "derived",
+  "baseUrl": "http://localhost:4001",
+  "method": "GET",
+  "endpoint": "/api/v1/merchants/{id}/settlements",
+  "requestBody": null,
+  "expectedStatus": 200,
+  "expectedResponseFile": "../Responses/TC-SQL-018_response.json",
+  "expectedResponse": [
+    {
+      "id": "<database-derived>",
+      "merchantId": "<database-derived>",
+      "amount": "<database-derived>",
+      "description": "<database-derived>"
+    }
+  ],
+  "sqlValidationFile": "../../SQL/TC-SQL-018_Calculate_settlement_totals_per_merchant.sql",
+  "sqlValidation": "SELECT merchantId, ROUND(SUM(amount),2) AS merchantSettlementTotal\nFROM dbo.Settlements\nGROUP BY merchantId\nORDER BY merchantId;",
+  "sqlExpectedResult": "Each total matches the expected settlement total for that merchant.",
+  "dbReconciliation": "TC-SQL-018: Reconcile the API response from /api/v1/merchants/{id}/settlements against the SQL validation for TC-SQL-018; the API result must satisfy this case's expected database rule: Each total matches the expected settlement total for that merchant.",
+  "notes": "Endpoint and response contract taken only from the supplied Swagger. Response values shown as <database-derived> or <JWT> must be replaced/validated against the live API and SQL result."
+}

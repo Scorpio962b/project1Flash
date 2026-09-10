@@ -1,0 +1,24 @@
+{
+  "testCaseId": "TC-SQL-043",
+  "databaseTestCase": "TC-SQL-043",
+  "layer": "API",
+  "group": "Business Intelligence Reports",
+  "priority": "P2",
+  "title": "Report product count by product type",
+  "apiCoverage": "unsupported",
+  "baseUrl": "http://localhost:4001",
+  "method": null,
+  "endpoint": null,
+  "requestBody": null,
+  "expectedStatus": null,
+  "expectedResponseFile": "../Responses/TC-SQL-043_response.json",
+  "expectedResponse": {
+    "supportedBySwagger": false,
+    "message": "No product/report endpoint is defined in the supplied Swagger; this SQL case remains a database-only validation."
+  },
+  "sqlValidationFile": "../../SQL/TC-SQL-043_Report_product_count_by_product_type.sql",
+  "sqlValidation": "SELECT productType, COUNT(*) AS productCount\nFROM dbo.Products\nGROUP BY productType\nORDER BY productCount DESC;",
+  "sqlExpectedResult": "Counts accurately represent products in each productType.",
+  "dbReconciliation": "TC-SQL-043: No direct Swagger endpoint is available; retain the SQL result as the authoritative database validation and do not infer an API contract. Expected SQL outcome: Counts accurately represent products in each productType.",
+  "notes": "This database case has no direct product/report endpoint in the supplied Swagger, so it is retained as an explicit coverage gap rather than inventing an endpoint."
+}

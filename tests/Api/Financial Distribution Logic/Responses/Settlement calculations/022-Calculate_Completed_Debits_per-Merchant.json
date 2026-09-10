@@ -1,0 +1,16 @@
+{
+  "testCaseId": "TC-SQL-022",
+  "status": 200,
+  "body": [
+    {
+      "id": "<database-derived>",
+      "merchantId": "<database-derived>",
+      "amount": "<database-derived>",
+      "transactionType": "<database-derived>",
+      "serviceType": "<database-derived>",
+      "status": "completed",
+      "reference": "<database-derived>"
+    }
+  ],
+  "reconciliationRule": "TC-SQL-022: Reconcile the API response from /transactions/history against the SQL validation for TC-SQL-022; the API result must satisfy this case's expected database rule: Totals match the expected debit ledger for each merchant. If no debits exist in the current dataset, the query should return no rows."
+}

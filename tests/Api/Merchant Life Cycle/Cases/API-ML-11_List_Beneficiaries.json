@@ -1,0 +1,29 @@
+{
+  "testCaseId": "API-ML-11",
+  "databaseTestCase": "DB-TC-11",
+  "layer": "API",
+  "group": "Merchant Lifecycle",
+  "priority": "P0",
+  "title": "API-ML-11",
+  "apiCoverage": "direct",
+  "baseUrl": "http://localhost:4001",
+  "method": "GET",
+  "endpoint": "/beneficiaries",
+  "requestBody": null,
+  "expectedStatus": 200,
+  "expectedResponseFile": "../Responses/API-ML-11_response.json",
+  "expectedResponse": [
+    {
+      "id": "<database-derived>",
+      "beneficiaryName": "<database-derived>",
+      "bank": "<database-derived>",
+      "accountNumber": "<database-derived>",
+      "reference": "<database-derived>"
+    }
+  ],
+  "sqlValidationFile": "../../SQL/DB-TC-11_API-ML-11_List_beneficiaries.sql",
+  "sqlValidation": "SELECT b.* FROM dbo.Beneficiaries b JOIN dbo.Merchants m ON m.id=b.merchantId WHERE m.email='merchant@flashgateway.local';",
+  "sqlExpectedResult": "Only that merchant's beneficiaries are returned.",
+  "dbReconciliation": "API-ML-11: Reconcile the API response from /beneficiaries against the SQL validation for DB-TC-11; the API result must satisfy this case's expected database rule: Only that merchant's beneficiaries are returned.",
+  "notes": "Endpoint and response contract taken only from the supplied Swagger. Response values shown as <database-derived> or <JWT> must be replaced/validated against the live API and SQL result."
+}

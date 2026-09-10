@@ -1,0 +1,16 @@
+{
+  "testCaseId": "TC-SQL-045",
+  "status": 200,
+  "body": [
+    {
+      "id": "<database-derived>",
+      "merchantId": "<database-derived>",
+      "amount": "<database-derived>",
+      "transactionType": "<database-derived>",
+      "serviceType": "<database-derived>",
+      "status": "completed",
+      "reference": "<database-derived>"
+    }
+  ],
+  "reconciliationRule": "TC-SQL-045: Reconcile the API response from /transactions/history against the SQL validation for TC-SQL-045; the API result must satisfy this case's expected database rule: Merchants are ranked correctly by completed transaction value."
+}

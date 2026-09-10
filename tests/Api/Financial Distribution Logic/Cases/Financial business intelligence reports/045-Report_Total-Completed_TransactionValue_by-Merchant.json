@@ -1,0 +1,31 @@
+{
+  "testCaseId": "TC-SQL-045",
+  "databaseTestCase": "TC-SQL-045",
+  "layer": "API",
+  "group": "Business Intelligence Reports",
+  "priority": "P2",
+  "title": "Report total completed transaction value by merchant",
+  "apiCoverage": "derived",
+  "baseUrl": "http://localhost:4001",
+  "method": "GET",
+  "endpoint": "/transactions/history",
+  "requestBody": null,
+  "expectedStatus": 200,
+  "expectedResponseFile": "../Responses/TC-SQL-045_response.json",
+  "expectedResponse": [
+    {
+      "id": "<database-derived>",
+      "merchantId": "<database-derived>",
+      "amount": "<database-derived>",
+      "transactionType": "<database-derived>",
+      "serviceType": "<database-derived>",
+      "status": "completed",
+      "reference": "<database-derived>"
+    }
+  ],
+  "sqlValidationFile": "../../SQL/TC-SQL-045_Report_total_completed_transaction_value_by_merchant.sql",
+  "sqlValidation": "SELECT\n    m.id,\n    m.merchantName,\n    ROUND(COALESCE(SUM(CASE WHEN wt.status='completed' THEN wt.amount ELSE 0 END),0),2) AS completedTransactionValue\nFROM dbo.Merchants m\nLEFT JOIN dbo.WalletTransactions wt ON wt.merchantId = m.id\nGROUP BY m.id, m.merchantName\nORDER BY completedTransactionValue DESC;",
+  "sqlExpectedResult": "Merchants are ranked correctly by completed transaction value.",
+  "dbReconciliation": "TC-SQL-045: Reconcile the API response from /transactions/history against the SQL validation for TC-SQL-045; the API result must satisfy this case's expected database rule: Merchants are ranked correctly by completed transaction value.",
+  "notes": "Endpoint and response contract taken only from the supplied Swagger. Response values shown as <database-derived> or <JWT> must be replaced/validated against the live API and SQL result."
+}

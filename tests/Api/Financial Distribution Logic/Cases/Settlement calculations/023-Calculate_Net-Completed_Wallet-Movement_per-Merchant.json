@@ -1,0 +1,31 @@
+{
+  "testCaseId": "TC-SQL-023",
+  "databaseTestCase": "TC-SQL-023",
+  "layer": "API",
+  "group": "Settlement Math Verification",
+  "priority": "P0",
+  "title": "Calculate net completed wallet movement per merchant",
+  "apiCoverage": "derived",
+  "baseUrl": "http://localhost:4001",
+  "method": "GET",
+  "endpoint": "/transactions/history",
+  "requestBody": null,
+  "expectedStatus": 200,
+  "expectedResponseFile": "../Responses/TC-SQL-023_response.json",
+  "expectedResponse": [
+    {
+      "id": "<database-derived>",
+      "merchantId": "<database-derived>",
+      "amount": "<database-derived>",
+      "transactionType": "<database-derived>",
+      "serviceType": "<database-derived>",
+      "status": "completed",
+      "reference": "<database-derived>"
+    }
+  ],
+  "sqlValidationFile": "../../SQL/TC-SQL-023_Calculate_net_completed_wallet_movement_per_merchant.sql",
+  "sqlValidation": "SELECT\n    merchantId,\n    ROUND(\n      SUM(CASE WHEN transactionType='credit' THEN amount ELSE 0 END)\n      - SUM(CASE WHEN transactionType='debit' THEN amount ELSE 0 END),\n      2\n    ) AS netMovement\nFROM dbo.WalletTransactions\nWHERE status = 'completed'\nGROUP BY merchantId\nORDER BY merchantId;",
+  "sqlExpectedResult": "Net movement equals credits minus debits for every merchant.",
+  "dbReconciliation": "TC-SQL-023: Reconcile the API response from /transactions/history against the SQL validation for TC-SQL-023; the API result must satisfy this case's expected database rule: Net movement equals credits minus debits for every merchant.",
+  "notes": "Endpoint and response contract taken only from the supplied Swagger. Response values shown as <database-derived> or <JWT> must be replaced/validated against the live API and SQL result."
+}

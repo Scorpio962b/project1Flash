@@ -1,0 +1,13 @@
+{
+  "testCaseId": "API-FD-13",
+  "status": 200,
+  "body": [
+    {
+      "id": "<database-derived>",
+      "merchantId": "<database-derived>",
+      "amount": "<database-derived>",
+      "description": "<database-derived>"
+    }
+  ],
+  "reconciliationRule": "API-FD-13: Reconcile the API response from /api/v1/merchants/{id}/settlements against the SQL validation for DB-TC-28; the API result must satisfy this case's expected database rule: API settlement records match the database records."
+}

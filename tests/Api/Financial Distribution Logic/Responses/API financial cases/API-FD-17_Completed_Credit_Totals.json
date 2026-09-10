@@ -1,0 +1,16 @@
+{
+  "testCaseId": "API-FD-17",
+  "status": 200,
+  "body": [
+    {
+      "id": "<database-derived>",
+      "merchantId": "<database-derived>",
+      "amount": "<database-derived>",
+      "transactionType": "<database-derived>",
+      "serviceType": "<database-derived>",
+      "status": "completed",
+      "reference": "<database-derived>"
+    }
+  ],
+  "reconciliationRule": "API-FD-17: Reconcile the API response from /transactions/history against the SQL validation for DB-TC-32; the API result must satisfy this case's expected database rule: Credit totals match the expected ledger."
+}

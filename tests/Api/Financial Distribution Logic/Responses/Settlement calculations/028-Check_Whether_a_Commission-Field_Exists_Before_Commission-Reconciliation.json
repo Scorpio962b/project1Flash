@@ -1,0 +1,10 @@
+{
+  "testCaseId": "TC-SQL-028",
+  "status": 200,
+  "body": {
+    "success": true,
+    "commission": "<database/application-derived>",
+    "settlementAmount": "<database/application-derived>"
+  },
+  "reconciliationRule": "TC-SQL-028: Reconcile the API response from /api/v1/merchants/{id}/purchase against the SQL validation for TC-SQL-028; the API result must satisfy this case's expected database rule: At least one commission-related column is returned if commission percentage is a database requirement. If no rows are returned, record this as a schema/data-gap rather than inventing a commission calculation."
+}

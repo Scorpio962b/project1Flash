@@ -1,0 +1,29 @@
+{
+  "testCaseId": "TC-SQL-039",
+  "databaseTestCase": "TC-SQL-039",
+  "layer": "API",
+  "group": "Data Hygiene & Constraints",
+  "priority": "P1",
+  "title": "Check payment methods for missing masked card details",
+  "apiCoverage": "direct",
+  "baseUrl": "http://localhost:4001",
+  "method": "GET",
+  "endpoint": "/payment-methods",
+  "requestBody": null,
+  "expectedStatus": 200,
+  "expectedResponseFile": "../Responses/TC-SQL-039_response.json",
+  "expectedResponse": [
+    {
+      "id": "<database-derived>",
+      "nickname": "<database-derived>",
+      "cardNumber": "<masked-card>",
+      "expiryDate": "<database-derived>",
+      "status": "<database-derived>"
+    }
+  ],
+  "sqlValidationFile": "../../SQL/TC-SQL-039_Check_payment_methods_for_missing_masked_card_details.sql",
+  "sqlValidation": "SELECT *\nFROM dbo.PaymentMethods\nWHERE nickname IS NULL OR LTRIM(RTRIM(nickname)) = ''\n   OR cardNumber IS NULL OR LTRIM(RTRIM(cardNumber)) = ''\n   OR expiryDate IS NULL OR LTRIM(RTRIM(expiryDate)) = '';",
+  "sqlExpectedResult": "0 rows are returned.",
+  "dbReconciliation": "TC-SQL-039: Reconcile the API response from /payment-methods against the SQL validation for TC-SQL-039; the API result must satisfy this case's expected database rule: 0 rows are returned.",
+  "notes": "Endpoint and response contract taken only from the supplied Swagger. Response values shown as <database-derived> or <JWT> must be replaced/validated against the live API and SQL result."
+}

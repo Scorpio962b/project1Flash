@@ -1,0 +1,29 @@
+{
+  "testCaseId": "TC-SQL-048",
+  "databaseTestCase": "TC-SQL-048",
+  "layer": "API",
+  "group": "Business Intelligence Reports",
+  "priority": "P2",
+  "title": "Identify top and low-performing products by price",
+  "apiCoverage": "derived",
+  "baseUrl": "http://localhost:4001",
+  "method": "POST",
+  "endpoint": "/api/v1/merchants/{id}/purchase",
+  "requestBody": {
+    "amount": 10,
+    "product": "Airtime",
+    "productId": 2
+  },
+  "expectedStatus": 200,
+  "expectedResponseFile": "../Responses/TC-SQL-048_response.json",
+  "expectedResponse": {
+    "success": true,
+    "commission": "<database/application-derived>",
+    "settlementAmount": "<database/application-derived>"
+  },
+  "sqlValidationFile": "../../SQL/TC-SQL-048_Identify_top_and_low-performing_products_by_price.sql",
+  "sqlValidation": "WITH RankedProducts AS (\n    SELECT\n        id, name, productType, brand, unitPrice,\n        RANK() OVER (ORDER BY unitPrice DESC) AS highRank,\n        RANK() OVER (ORDER BY unitPrice ASC) AS lowRank\n    FROM dbo.Products\n)\nSELECT *\nFROM RankedProducts\nWHERE highRank <= 3 OR lowRank <= 3\nORDER BY unitPrice DESC;",
+  "sqlExpectedResult": "The report returns the highest- and lowest-priced products based on the available product data.",
+  "dbReconciliation": "TC-SQL-048: Reconcile the API response from /api/v1/merchants/{id}/purchase against the SQL validation for TC-SQL-048; the API result must satisfy this case's expected database rule: The report returns the highest- and lowest-priced products based on the available product data.",
+  "notes": "Endpoint and response contract taken only from the supplied Swagger. Response values shown as <database-derived> or <JWT> must be replaced/validated against the live API and SQL result."
+}

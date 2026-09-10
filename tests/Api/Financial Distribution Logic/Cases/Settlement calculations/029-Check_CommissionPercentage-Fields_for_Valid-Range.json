@@ -1,0 +1,29 @@
+{
+  "testCaseId": "TC-SQL-029",
+  "databaseTestCase": "TC-SQL-029",
+  "layer": "API",
+  "group": "Settlement Math Verification",
+  "priority": "P0",
+  "title": "Check commission percentage fields for valid range",
+  "apiCoverage": "derived",
+  "baseUrl": "http://localhost:4001",
+  "method": "POST",
+  "endpoint": "/api/v1/merchants/{id}/purchase",
+  "requestBody": {
+    "amount": 10,
+    "product": "Airtime",
+    "productId": 2
+  },
+  "expectedStatus": 200,
+  "expectedResponseFile": "../Responses/TC-SQL-029_response.json",
+  "expectedResponse": {
+    "success": true,
+    "commission": "<database/application-derived>",
+    "settlementAmount": "<database/application-derived>"
+  },
+  "sqlValidationFile": "../../SQL/TC-SQL-029_Check_commission_percentage_fields_for_valid_range.sql",
+  "sqlValidation": "DECLARE @sql nvarchar(max) = N'';\n\nSELECT @sql = STRING_AGG(\n    N'SELECT ''' + TABLE_SCHEMA + N'.' + TABLE_NAME + N'.' + COLUMN_NAME + N''' AS fieldName, '\n    + N'CAST(' + QUOTENAME(COLUMN_NAME) + N' AS decimal(18,4)) AS commissionValue '\n    + N'FROM ' + QUOTENAME(TABLE_SCHEMA) + N'.' + QUOTENAME(TABLE_NAME)\n    + N' WHERE TRY_CONVERT(decimal(18,4),' + QUOTENAME(COLUMN_NAME) + N') IS NOT NULL '\n    + N' AND (TRY_CONVERT(decimal(18,4),' + QUOTENAME(COLUMN_NAME) + N') < 0 '\n    + N' OR TRY_CONVERT(decimal(18,4),' + QUOTENAME(COLUMN_NAME) + N') > 100)',\n    N' UNION ALL '\n)\nFROM INFORMATION_SCHEMA.COLUMNS\nWHERE LOWER(COLUMN_NAME) LIKE '%commission%'\n  AND DATA_TYPE IN ('decimal','numeric','float','real','money','smallmoney','int','bigint');\n\nIF @sql <> N''\n    EXEC sp_executesql @sql;\nELSE\n    SELECT 'NO COMMISSION COLUMN FOUND' AS result;",
+  "sqlExpectedResult": "0 invalid commission values are returned. If 'NO COMMISSION COLUMN FOUND' appears, commission validation cannot be performed from the supplied schema.",
+  "dbReconciliation": "TC-SQL-029: Reconcile the API response from /api/v1/merchants/{id}/purchase against the SQL validation for TC-SQL-029; the API result must satisfy this case's expected database rule: 0 invalid commission values are returned. If 'NO COMMISSION COLUMN FOUND' appears, commission validation cannot be performed from the supplied schema.",
+  "notes": "Endpoint and response contract taken only from the supplied Swagger. Response values shown as <database-derived> or <JWT> must be replaced/validated against the live API and SQL result."
+}

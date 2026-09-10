@@ -1,0 +1,13 @@
+{
+  "testCaseId": "API-RBAC-12",
+  "status": 200,
+  "body": [
+    {
+      "id": "<database-derived>",
+      "merchantId": "<database-derived>",
+      "amount": "<database-derived>",
+      "description": "<database-derived>"
+    }
+  ],
+  "reconciliationRule": "API-RBAC-12: Reconcile the API response from /api/v1/merchants/{id}/settlements against the SQL validation for DB-TC-47; the API result must satisfy this case's expected database rule: Each settlement belongs to the correct account."
+}

@@ -1,0 +1,24 @@
+{
+  "testCaseId": "TC-SQL-008",
+  "databaseTestCase": "TC-SQL-008",
+  "layer": "API",
+  "group": "Financial Reconciliation",
+  "priority": "P0",
+  "title": "Compare merchant wallet balance with completed wallet credits/debits",
+  "apiCoverage": "derived",
+  "baseUrl": "http://localhost:4001",
+  "method": "GET",
+  "endpoint": "/api/v1/merchants/{id}/balance",
+  "requestBody": null,
+  "expectedStatus": 200,
+  "expectedResponseFile": "../Responses/TC-SQL-008_response.json",
+  "expectedResponse": {
+    "merchantId": "<id>",
+    "walletBalance": "<database-derived>"
+  },
+  "sqlValidationFile": "../../SQL/TC-SQL-008_Compare_merchant_wallet_balance_with_completed_wallet_credits-debits.sql",
+  "sqlValidation": "SELECT\n    m.id,\n    m.merchantName,\n    m.walletBalance,\n    SUM(CASE WHEN wt.status = 'completed' AND wt.transactionType = 'credit' THEN wt.amount ELSE 0 END) AS credits,\n    SUM(CASE WHEN wt.status = 'completed' AND wt.transactionType = 'debit' THEN wt.amount ELSE 0 END) AS debits,\n    SUM(CASE WHEN wt.status = 'completed' AND wt.transactionType = 'credit' THEN wt.amount ELSE 0 END)\n      - SUM(CASE WHEN wt.status = 'completed' AND wt.transactionType = 'debit' THEN wt.amount ELSE 0 END) AS calculatedBalance\nFROM dbo.Merchants m\nLEFT JOIN dbo.WalletTransactions wt ON wt.merchantId = m.id\nGROUP BY m.id, m.merchantName, m.walletBalance\nHAVING ABS(\n    m.walletBalance -\n    (\n      SUM(CASE WHEN wt.status = 'completed' AND wt.transactionType = 'credit' THEN wt.amount ELSE 0 END)\n      - SUM(CASE WHEN wt.status = 'completed' AND wt.transactionType = 'debit' THEN wt.amount ELSE 0 END)\n    )\n) > 0.01;",
+  "sqlExpectedResult": "0 rows are returned where the walletBalance is intended to equal the completed credit/debit ledger.",
+  "dbReconciliation": "TC-SQL-008: Reconcile the API response from /api/v1/merchants/{id}/balance against the SQL validation for TC-SQL-008; the API result must satisfy this case's expected database rule: 0 rows are returned where the walletBalance is intended to equal the completed credit/debit ledger.",
+  "notes": "Endpoint and response contract taken only from the supplied Swagger. Response values shown as <database-derived> or <JWT> must be replaced/validated against the live API and SQL result."
+}

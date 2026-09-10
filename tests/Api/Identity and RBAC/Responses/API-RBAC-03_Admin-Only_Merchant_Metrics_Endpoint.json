@@ -1,0 +1,8 @@
+{
+  "testCaseId": "API-RBAC-03",
+  "status": 200,
+  "body": {
+    "merchantCount": "<database-derived>"
+  },
+  "reconciliationRule": "API-RBAC-03: Reconcile the API response from /api/v1/ledger/metrics against the SQL validation for DB-TC-38; the API result must satisfy this case's expected database rule: The count matches the API metrics expectation."
+}

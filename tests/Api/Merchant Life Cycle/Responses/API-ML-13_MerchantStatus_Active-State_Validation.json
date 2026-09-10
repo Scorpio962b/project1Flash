@@ -1,0 +1,13 @@
+{
+  "testCaseId": "API-ML-13",
+  "status": 200,
+  "body": {
+    "id": "<id>",
+    "merchantName": "<database-derived>",
+    "email": "<database-derived>",
+    "role": "<database-derived>",
+    "status": "<database-derived>",
+    "walletBalance": "<database-derived>"
+  },
+  "reconciliationRule": "API-ML-13: Reconcile the API response from /api/v1/merchants/{id} against the SQL validation for DB-TC-13; the API result must satisfy this case's expected database rule: Merchant lifecycle status matches the API result."
+}

@@ -1,0 +1,14 @@
+{
+  "testCaseId": "TC-SQL-049",
+  "status": 200,
+  "body": [
+    {
+      "id": "<database-derived>",
+      "email": "<database-derived>",
+      "role": "<database-derived>",
+      "walletBalance": "<database-derived>",
+      "status": "<database-derived>"
+    }
+  ],
+  "reconciliationRule": "TC-SQL-049: Reconcile the API response from /accounts against the SQL validation for TC-SQL-049; the API result must satisfy this case's expected database rule: Merchants are correctly ranked by wallet balance."
+}

@@ -1,0 +1,32 @@
+{
+  "testCaseId": "API-RBAC-02",
+  "databaseTestCase": "DB-TC-37",
+  "layer": "API",
+  "group": "Identity & RBAC",
+  "priority": "P1",
+  "title": "API-RBAC-02",
+  "apiCoverage": "direct",
+  "baseUrl": "http://localhost:4001",
+  "method": "POST",
+  "endpoint": "/api/v1/auth/login",
+  "requestBody": {
+    "email": "merchant@flashgateway.local",
+    "password": "Password123!"
+  },
+  "expectedStatus": 200,
+  "expectedResponseFile": "../Responses/API-RBAC-02_response.json",
+  "expectedResponse": {
+    "token": "<JWT>",
+    "user": {
+      "id": "<database-derived>",
+      "email": "<request.email>",
+      "role": "<database-derived>",
+      "status": "<database-derived>"
+    }
+  },
+  "sqlValidationFile": "../../SQL/DB-TC-37_API-RBAC-02_Merchant_login.sql",
+  "sqlValidation": "SELECT id,email,role,status FROM dbo.Merchants WHERE role='merchant';",
+  "sqlExpectedResult": "Merchant account exists with role=merchant.",
+  "dbReconciliation": "API-RBAC-02: Reconcile the API response from /api/v1/auth/login against the SQL validation for DB-TC-37; the API result must satisfy this case's expected database rule: Merchant account exists with role=merchant.",
+  "notes": "Endpoint and response contract taken only from the supplied Swagger. Response values shown as <database-derived> or <JWT> must be replaced/validated against the live API and SQL result."
+}

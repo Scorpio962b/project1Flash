@@ -1,0 +1,28 @@
+{
+  "testCaseId": "API-RBAC-12",
+  "databaseTestCase": "DB-TC-47",
+  "layer": "API",
+  "group": "Identity & RBAC",
+  "priority": "P1",
+  "title": "API-RBAC-12",
+  "apiCoverage": "derived",
+  "baseUrl": "http://localhost:4001",
+  "method": "GET",
+  "endpoint": "/api/v1/merchants/{id}/settlements",
+  "requestBody": null,
+  "expectedStatus": 200,
+  "expectedResponseFile": "../Responses/API-RBAC-12_response.json",
+  "expectedResponse": [
+    {
+      "id": "<database-derived>",
+      "merchantId": "<database-derived>",
+      "amount": "<database-derived>",
+      "description": "<database-derived>"
+    }
+  ],
+  "sqlValidationFile": "../../SQL/DB-TC-47_API-RBAC-12_Admin_versus_merchant_settlement_ownership.sql",
+  "sqlValidation": "SELECT s.id,s.merchantId,m.email,m.role FROM dbo.Settlements s JOIN dbo.Merchants m ON m.id=s.merchantId ORDER BY s.id;",
+  "sqlExpectedResult": "Each settlement belongs to the correct account.",
+  "dbReconciliation": "API-RBAC-12: Reconcile the API response from /api/v1/merchants/{id}/settlements against the SQL validation for DB-TC-47; the API result must satisfy this case's expected database rule: Each settlement belongs to the correct account.",
+  "notes": "Endpoint and response contract taken only from the supplied Swagger. Response values shown as <database-derived> or <JWT> must be replaced/validated against the live API and SQL result."
+}

@@ -1,0 +1,10 @@
+{
+  "testCaseId": "API-ML-14",
+  "status": 200,
+  "body": {
+    "success": true,
+    "commission": "<database/application-derived>",
+    "settlementAmount": "<database/application-derived>"
+  },
+  "reconciliationRule": "API-ML-14: Reconcile the API response from /api/v1/merchants/{id}/purchase against the SQL validation for DB-TC-14; the API result must satisfy this case's expected database rule: Requested product exists with the expected details."
+}

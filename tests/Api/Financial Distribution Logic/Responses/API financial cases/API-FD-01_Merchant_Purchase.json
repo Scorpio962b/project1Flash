@@ -1,0 +1,10 @@
+{
+  "testCaseId": "API-FD-01",
+  "status": 200,
+  "body": {
+    "success": true,
+    "commission": "<database/application-derived>",
+    "settlementAmount": "<database/application-derived>"
+  },
+  "reconciliationRule": "API-FD-01: Reconcile the API response from /api/v1/merchants/{id}/purchase against the SQL validation for DB-TC-16; the API result must satisfy this case's expected database rule: The API purchase has a corresponding wallet transaction."
+}

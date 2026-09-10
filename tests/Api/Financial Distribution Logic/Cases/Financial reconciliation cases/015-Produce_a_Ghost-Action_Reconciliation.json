@@ -1,0 +1,31 @@
+{
+  "testCaseId": "TC-SQL-015",
+  "databaseTestCase": "TC-SQL-015",
+  "layer": "API",
+  "group": "Financial Reconciliation",
+  "priority": "P0",
+  "title": "Produce a ghost-action reconciliation report",
+  "apiCoverage": "derived",
+  "baseUrl": "http://localhost:4001",
+  "method": "GET",
+  "endpoint": "/transactions/history",
+  "requestBody": null,
+  "expectedStatus": 200,
+  "expectedResponseFile": "../Responses/TC-SQL-015_response.json",
+  "expectedResponse": [
+    {
+      "id": "<database-derived>",
+      "merchantId": "<database-derived>",
+      "amount": "<database-derived>",
+      "transactionType": "<database-derived>",
+      "serviceType": "<database-derived>",
+      "status": "completed",
+      "reference": "<database-derived>"
+    }
+  ],
+  "sqlValidationFile": "../../SQL/TC-SQL-015_Produce_a_ghost-action_reconciliation_report.sql",
+  "sqlValidation": "SELECT 'Settlement' AS sourceTable, s.merchantId AS merchantId\nFROM dbo.Settlements s\nLEFT JOIN dbo.Merchants m ON m.id = s.merchantId\nWHERE m.id IS NULL\nUNION ALL\nSELECT 'WalletTransaction', wt.merchantId\nFROM dbo.WalletTransactions wt\nLEFT JOIN dbo.Merchants m ON m.id = wt.merchantId\nWHERE m.id IS NULL\nUNION ALL\nSELECT 'PaymentMethod', pm.merchantId\nFROM dbo.PaymentMethods pm\nLEFT JOIN dbo.Merchants m ON m.id = pm.merchantId\nWHERE m.id IS NULL\nUNION ALL\nSELECT 'Beneficiary', b.merchantId\nFROM dbo.Beneficiaries b\nLEFT JOIN dbo.Merchants m ON m.id = b.merchantId\nWHERE m.id IS NULL;",
+  "sqlExpectedResult": "0 rows are returned.",
+  "dbReconciliation": "TC-SQL-015: Reconcile the API response from /transactions/history against the SQL validation for TC-SQL-015; the API result must satisfy this case's expected database rule: 0 rows are returned.",
+  "notes": "Endpoint and response contract taken only from the supplied Swagger. Response values shown as <database-derived> or <JWT> must be replaced/validated against the live API and SQL result."
+}

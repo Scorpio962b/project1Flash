@@ -1,0 +1,24 @@
+{
+  "testCaseId": "API-RBAC-05",
+  "databaseTestCase": "DB-TC-40",
+  "layer": "API",
+  "group": "Identity & RBAC",
+  "priority": "P1",
+  "title": "API-RBAC-05",
+  "apiCoverage": "direct",
+  "baseUrl": "http://localhost:4001",
+  "method": "GET",
+  "endpoint": "/api/v1/ledger/metrics",
+  "requestBody": null,
+  "expectedStatus": 403,
+  "expectedResponseFile": "../Responses/API-RBAC-05_response.json",
+  "expectedResponse": {
+    "success": false,
+    "message": "Admin role required"
+  },
+  "sqlValidationFile": "../../SQL/DB-TC-40_API-RBAC-05_Merchant_cannot_access_admin-only_endpoint.sql",
+  "sqlValidation": "SELECT * FROM dbo.WalletTransactions WHERE merchantId IS NULL;",
+  "sqlExpectedResult": "0 rows; failed/unauthorized API actions must not create ownerless transactions.",
+  "dbReconciliation": "API-RBAC-05: Reconcile the API response from /api/v1/ledger/metrics against the SQL validation for DB-TC-40; the API result must satisfy this case's expected database rule: 0 rows; failed/unauthorized API actions must not create ownerless transactions.",
+  "notes": "Endpoint and response contract taken only from the supplied Swagger. Response values shown as <database-derived> or <JWT> must be replaced/validated against the live API and SQL result."
+}

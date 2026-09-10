@@ -1,0 +1,14 @@
+{
+  "testCaseId": "API-RBAC-04",
+  "status": 200,
+  "body": [
+    {
+      "id": "<database-derived>",
+      "email": "<database-derived>",
+      "role": "<database-derived>",
+      "walletBalance": "<database-derived>",
+      "status": "<database-derived>"
+    }
+  ],
+  "reconciliationRule": "API-RBAC-04: Reconcile the API response from /accounts against the SQL validation for DB-TC-39; the API result must satisfy this case's expected database rule: Database account list matches the API response for the requested scope."
+}

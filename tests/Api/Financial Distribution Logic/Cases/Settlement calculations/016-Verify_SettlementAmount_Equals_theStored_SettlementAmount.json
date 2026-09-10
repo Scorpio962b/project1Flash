@@ -1,0 +1,28 @@
+{
+  "testCaseId": "TC-SQL-016",
+  "databaseTestCase": "TC-SQL-016",
+  "layer": "API",
+  "group": "Settlement Math Verification",
+  "priority": "P0",
+  "title": "Verify settlement amount equals the stored settlement amount",
+  "apiCoverage": "derived",
+  "baseUrl": "http://localhost:4001",
+  "method": "GET",
+  "endpoint": "/api/v1/merchants/{id}/settlements",
+  "requestBody": null,
+  "expectedStatus": 200,
+  "expectedResponseFile": "../Responses/TC-SQL-016_response.json",
+  "expectedResponse": [
+    {
+      "id": "<database-derived>",
+      "merchantId": "<database-derived>",
+      "amount": "<database-derived>",
+      "description": "<database-derived>"
+    }
+  ],
+  "sqlValidationFile": "../../SQL/TC-SQL-016_Verify_settlement_amount_equals_the_stored_settlement_amount.sql",
+  "sqlValidation": "SELECT id, merchantId, amount\nFROM dbo.Settlements\nWHERE amount <> ROUND(amount,2);",
+  "sqlExpectedResult": "0 rows are returned.",
+  "dbReconciliation": "TC-SQL-016: Reconcile the API response from /api/v1/merchants/{id}/settlements against the SQL validation for TC-SQL-016; the API result must satisfy this case's expected database rule: 0 rows are returned.",
+  "notes": "Endpoint and response contract taken only from the supplied Swagger. Response values shown as <database-derived> or <JWT> must be replaced/validated against the live API and SQL result."
+}

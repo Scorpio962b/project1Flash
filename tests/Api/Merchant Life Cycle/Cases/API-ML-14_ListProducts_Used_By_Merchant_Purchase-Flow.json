@@ -1,0 +1,29 @@
+{
+  "testCaseId": "API-ML-14",
+  "databaseTestCase": "DB-TC-14",
+  "layer": "API",
+  "group": "Merchant Lifecycle",
+  "priority": "P0",
+  "title": "API-ML-14",
+  "apiCoverage": "derived",
+  "baseUrl": "http://localhost:4001",
+  "method": "POST",
+  "endpoint": "/api/v1/merchants/{id}/purchase",
+  "requestBody": {
+    "amount": 10,
+    "product": "Airtime",
+    "productId": 2
+  },
+  "expectedStatus": 200,
+  "expectedResponseFile": "../Responses/API-ML-14_response.json",
+  "expectedResponse": {
+    "success": true,
+    "commission": "<database/application-derived>",
+    "settlementAmount": "<database/application-derived>"
+  },
+  "sqlValidationFile": "../../SQL/DB-TC-14_API-ML-14_List_products_used_by_merchant_purchase_flow.sql",
+  "sqlValidation": "SELECT id,name,productType,brand,unitPrice FROM dbo.Products ORDER BY id;",
+  "sqlExpectedResult": "Requested product exists with the expected details.",
+  "dbReconciliation": "API-ML-14: Reconcile the API response from /api/v1/merchants/{id}/purchase against the SQL validation for DB-TC-14; the API result must satisfy this case's expected database rule: Requested product exists with the expected details.",
+  "notes": "Endpoint and response contract taken only from the supplied Swagger. Response values shown as <database-derived> or <JWT> must be replaced/validated against the live API and SQL result."
+}

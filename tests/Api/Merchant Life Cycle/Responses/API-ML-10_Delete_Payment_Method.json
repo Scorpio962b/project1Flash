@@ -1,0 +1,8 @@
+{
+  "testCaseId": "API-ML-10",
+  "status": 200,
+  "body": {
+    "success": true
+  },
+  "reconciliationRule": "API-ML-10: Reconcile the API response from /payment-methods/{id} against the SQL validation for DB-TC-10; the API result must satisfy this case's expected database rule: The API-deleted record is absent or has the application's inactive/deleted state."
+}

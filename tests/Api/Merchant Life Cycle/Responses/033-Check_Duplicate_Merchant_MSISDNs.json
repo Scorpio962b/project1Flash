@@ -1,0 +1,9 @@
+{
+  "testCaseId": "TC-SQL-033",
+  "status": 409,
+  "body": {
+    "success": false,
+    "message": "Email or MSISDN already registered"
+  },
+  "reconciliationRule": "TC-SQL-033: Reconcile the API response from /api/v1/auth/register against the SQL validation for TC-SQL-033; the API result must satisfy this case's expected database rule: 0 rows are returned."
+}

@@ -1,0 +1,32 @@
+{
+  "testCaseId": "API-RBAC-01",
+  "databaseTestCase": "DB-TC-36",
+  "layer": "API",
+  "group": "Identity & RBAC",
+  "priority": "P1",
+  "title": "API-RBAC-01",
+  "apiCoverage": "direct",
+  "baseUrl": "http://localhost:4001",
+  "method": "POST",
+  "endpoint": "/api/v1/auth/login",
+  "requestBody": {
+    "email": "admin@flashgateway.local",
+    "password": "Password123!"
+  },
+  "expectedStatus": 200,
+  "expectedResponseFile": "../Responses/API-RBAC-01_response.json",
+  "expectedResponse": {
+    "token": "<JWT>",
+    "user": {
+      "id": "<database-derived>",
+      "email": "<request.email>",
+      "role": "<database-derived>",
+      "status": "<database-derived>"
+    }
+  },
+  "sqlValidationFile": "../../SQL/DB-TC-36_API-RBAC-01_Admin_login.sql",
+  "sqlValidation": "SELECT id,email,role,status FROM dbo.Merchants WHERE role='admin';",
+  "sqlExpectedResult": "Admin account exists with role=admin.",
+  "dbReconciliation": "API-RBAC-01: Reconcile the API response from /api/v1/auth/login against the SQL validation for DB-TC-36; the API result must satisfy this case's expected database rule: Admin account exists with role=admin.",
+  "notes": "Endpoint and response contract taken only from the supplied Swagger. Response values shown as <database-derived> or <JWT> must be replaced/validated against the live API and SQL result."
+}

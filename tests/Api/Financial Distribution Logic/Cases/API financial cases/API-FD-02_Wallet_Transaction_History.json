@@ -1,0 +1,12 @@
+{
+  "baseUrl": "http://localhost:4000",
+  "method": "GET",
+  "endpoint": "/transactions/history",
+  "requestBody": null,
+  "expectedStatus": 200,
+  "expectedResponseFile": "../Responses/API-FD-12_response.json",
+
+
+  "sqlValidationFile": "../../SQL/DB-TC-27_API-FD-12_Wallet_transaction_history.sql",
+  "sqlValidation": "SELECT * FROM dbo.WalletTransactions WHERE merchantId=2 ORDER BY id;"
+}

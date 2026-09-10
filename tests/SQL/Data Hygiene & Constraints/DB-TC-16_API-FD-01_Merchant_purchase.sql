@@ -11,7 +11,7 @@
 --
 -- DATABASE TEST: Purchase ledger record
 
-SELECT * FROM dbo.WalletTransactions WHERE merchantId=1 ORDER BY id DESC;
+SELECT * FROM dbo.WalletTransactions WHERE merchantId = 1 ORDER BY id DESC;
 
 -- EXPECTED RESULT
 -- The API purchase has a corresponding wallet transaction.

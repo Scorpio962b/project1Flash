@@ -1,0 +1,5 @@
+{
+  "testCaseId": "API-FD-12",
+  "status": 200,
+  "reconciliationRule": "API-FD-12: Reconcile the API response from /transactions/history against the SQL validation for DB-TC-27; the API result must satisfy this case's expected database rule: Database rows reconcile with the API transaction-history response."
+}

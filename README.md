@@ -242,4 +242,4 @@ npx playwright show-report
 - Test Reporting
 ---
 
-⭐ **This project was created as part of my Quality Engineering journey and demonstrates our practical experience testing a fintech application across the UI, API, and database layers.**
+⭐ **This project was created as part of our Quality Engineering journey and demonstrates our practical experience testing a fintech application across the UI, API, and database layers.**

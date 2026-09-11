@@ -240,13 +240,6 @@ npx playwright show-report
 - Git & GitHub
 - Debugging
 - Test Reporting
-
-## 👨‍💻 Author
-
-### Abdoelmaaliek Samaai
-
-**QA Engineer Sprinter • Full Stack Developer • Technical Support • System Support**
-
 ---
 
 ⭐ **This project was created as part of my Quality Engineering journey and demonstrates my practical experience testing a fintech application across the UI, API, and database layers.**

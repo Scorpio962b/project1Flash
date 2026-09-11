@@ -4,7 +4,7 @@ A fintech Quality Engineering and Test Automation project focused on testing a m
 
 ## 📌 About the Project
 
-Flash Gateway is a practical Quality Engineering project where I tested a fintech application from multiple levels to make sure the system works correctly and that financial data remains accurate.
+Flash Gateway is a practical Quality Engineering project where we tested a fintech application from multiple levels to make sure the system works correctly and that financial data remains accurate.
 
 The project covers:
 

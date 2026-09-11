@@ -21,19 +21,15 @@ test("test", async ({ page }) => {
   await page
     .getByRole("textbox", { name: "Phone (optional)" })
     .fill("0785647800");
-
   await page.getByRole("textbox", { name: "Password", exact: true }).click();
   await page
     .getByRole("textbox", { name: "Password", exact: true })
     .fill("nick123");
-
   await page.getByRole("textbox", { name: "Confirm password" }).click();
   await page.getByRole("textbox", { name: "Confirm password" }).fill("nick123");
-
   await page
     .getByRole("checkbox", { name: "I agree to the terms and" })
     .check();
-
   await page.getByRole("button", { name: "Create account" }).click();
   await expect (page.getByRole('status').getByText('Email, full name and password')).toBeVisible();
 });
